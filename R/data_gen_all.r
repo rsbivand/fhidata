@@ -62,9 +62,9 @@ gen_data_all <- function(base_loc) {
   # map labels
 
   norway_map_counties_label_positions_b2019 <- gen_norway_map_counties_label_positions(x_year_end=2020)
-  save(norway_map_counties_label_positions_b2019, file=file.path("/git","/fhidata","data","norway_map_counties_label_positions_b2019.rda"), compress = "xz")
+  save(norway_map_counties_label_positions_b2019, file=file.path(base_loc,"norway_map_counties_label_positions_b2019.rda"), compress = "xz")
   norway_map_counties_label_positions_b2020 <-  gen_norway_map_counties_label_positions(x_year_end=2020)
-  save(norway_map_counties_label_positions_b2020, file=file.path("/git","/fhidata","data","norway_map_counties_label_positions_b2020.rda"), compress = "xz")
+  save(norway_map_counties_label_positions_b2020, file=file.path(base_loc,"norway_map_counties_label_positions_b2020.rda"), compress = "xz")
 
   # norway_map_counties_b2019 <- gen_norway_map_counties(x_year_end=2019)
   # save(norway_map_counties_b2019, file=file.path("/git","/fhidata","data","norway_map_counties_b2019.rda"), compress = "xz")
