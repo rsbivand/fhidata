@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Childhood vaccination rates in Norway — norway_childhood_vax • fhidata</title>
+<title>Fixing data that has already been redistricted. — norway_fixing_merged_municips • fhidata</title>
 
 
 <!-- jquery -->
@@ -35,9 +35,12 @@
 
 
 
-<meta property="og:title" content="Childhood vaccination rates in Norway — norway_childhood_vax" />
-<meta property="og:description" content="We conveniently package vaccine coverage data taken from &quot;Kommunehelsa statistikkbank&quot;.
-This data was last updated on 2019-04-09." />
+<meta property="og:title" content="Fixing data that has already been redistricted. — norway_fixing_merged_municips" />
+<meta property="og:description" content="This dataset is used to transfer municipality level datasets (that have already
+been redistricted) to future borders. If `border_start=2018` then it is
+assumed that the 2018 borders were used from 2000-2018, and then 2019 borders
+used for 2019, 2020 borders for 2020, and so on. Hence a combination of `year`
+and `border_start` must always be used." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -70,7 +73,7 @@ This data was last updated on 2019-04-09." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fhidata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.9.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.11.28</span>
       </span>
     </div>
 
@@ -93,7 +96,7 @@ This data was last updated on 2019-04-09." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/Datasets.html">Datasets</a>
+      <a href="../articles/maps.html">Maps</a>
     </li>
   </ul>
 </li>
@@ -116,39 +119,44 @@ This data was last updated on 2019-04-09." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Childhood vaccination rates in Norway</h1>
+    <h1>Fixing data that has already been redistricted.</h1>
     
-    <div class="hidden name"><code>norway_childhood_vax.Rd</code></div>
+    <div class="hidden name"><code>norway_fixing_merged_municips.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>We conveniently package vaccine coverage data taken from "Kommunehelsa statistikkbank".
-This data was last updated on 2019-04-09.</p>
+    <p>This dataset is used to transfer municipality level datasets (that have already
+been redistricted) to future borders. If `border_start=2018` then it is
+assumed that the 2018 borders were used from 2000-2018, and then 2019 borders
+used for 2019, 2020 borders for 2020, and so on. Hence a combination of `year`
+and `border_start` must always be used.</p>
     </div>
 
-    <pre class="usage"><span class='no'>norway_childhood_vax</span></pre>
+    <pre class="usage"><span class='no'>norway_fixing_merged_municips</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     <dl class='dl-horizontal'>
-<dt>year</dt><dd><p>The middle year of a 5 year range (e.g. 2011 is the average of data from 2009-2013).</p></dd>
-<dt>location_code</dt><dd><p>The location code.</p></dd>
-<dt>age</dt><dd><p>The population age.</p></dd>
-<dt>vax</dt><dd><p>The vaccine.</p></dd>
-<dt>proportion</dt><dd><p>Proportion of people who are vaccinated.</p></dd>
-<dt>imputed</dt><dd><p>FALSE if real data. TRUE if it is the national average.</p></dd>
+<dt>municip_code_current</dt><dd><p>The municipality code per today.</p></dd>
+<dt>municip_code_original</dt><dd><p>The municipality code as of 'year'.</p></dd>
+<dt>year</dt><dd><p>The year corresponding to 'municip_code_original'.</p></dd>
+<dt>municip_name</dt><dd><p>The municipality name per today.</p></dd>
+<dt>county_code</dt><dd><p>The county code per today.</p></dd>
+<dt>county_name</dt><dd><p>The county name per today.</p></dd>
+<dt>region_code</dt><dd><p>The region code per today.</p></dd>
+<dt>region_name</dt><dd><p>The region name per today.</p></dd>
+<dt>border_start</dt><dd><p>The year that the data has currently been redistricted to.</p></dd>
+<dt>border_end</dt><dd><p>The year of the desired final redistricting.</p></dd>
+<dt>weighting</dt><dd><p>The weighting that needs to be applied.</p></dd>
 
 </dl>
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p><a href='http://khs.fhi.no/webview/'>http://khs.fhi.no/webview/</a></p>
+    <p><a href='https://no.wikipedia.org/wiki/Liste_over_norske_kommunenummer'>https://no.wikipedia.org/wiki/Liste_over_norske_kommunenummer</a></p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This dataset contains national/county/municipality level (5 year average) vaccination coverage rates
-for 16 year olds for the childhood vaccination program (diphtheria, hpv, measles,
-mumps, poliomyelitis, pertussis, rubella, tetanus).</p>
-<p>Municipalities are updated for the 2019 redistricting.</p>
+    <p>Last updated 2019-03-14</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -169,7 +177,7 @@ mumps, poliomyelitis, pertussis, rubella, tetanus).</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

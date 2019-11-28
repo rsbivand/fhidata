@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Maps of Norwegian Municipalities — norway_map_municips • fhidata</title>
+<title>Maps of Norwegian Municipalities (2020 borders) — norway_map_municips_b2020 • fhidata</title>
 
 
 <!-- jquery -->
@@ -35,10 +35,10 @@
 
 
 
-<meta property="og:title" content="Maps of Norwegian Municipalities — norway_map_municips" />
+<meta property="og:title" content="Maps of Norwegian Municipalities (2020 borders) — norway_map_municips_b2020" />
 <meta property="og:description" content="We conveniently package map datasets for Norwegian municipalities
 (taken from Geonorge) that can be used in ggplot2 without needing any geo
-libraries. This data is licensed under Creative Commons 0." />
+libraries. This data is licensed under Creative Commons BY 4.0 (CC BY 4.0)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -71,7 +71,7 @@ libraries. This data is licensed under Creative Commons 0." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fhidata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.9.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.11.28</span>
       </span>
     </div>
 
@@ -94,7 +94,7 @@ libraries. This data is licensed under Creative Commons 0." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/Datasets.html">Datasets</a>
+      <a href="../articles/maps.html">Maps</a>
     </li>
   </ul>
 </li>
@@ -117,18 +117,18 @@ libraries. This data is licensed under Creative Commons 0." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Maps of Norwegian Municipalities</h1>
+    <h1>Maps of Norwegian Municipalities (2020 borders)</h1>
     
-    <div class="hidden name"><code>norway_map_municips.Rd</code></div>
+    <div class="hidden name"><code>norway_map_municips_b2020.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>We conveniently package map datasets for Norwegian municipalities
 (taken from Geonorge) that can be used in ggplot2 without needing any geo
-libraries. This data is licensed under Creative Commons 0.</p>
+libraries. This data is licensed under Creative Commons BY 4.0 (CC BY 4.0).</p>
     </div>
 
-    <pre class="usage"><span class='no'>norway_map_municips</span></pre>
+    <pre class="usage"><span class='no'>norway_map_municips_b2020</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
@@ -146,15 +146,15 @@ libraries. This data is licensed under Creative Commons 0.</p>
 </dl>
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p><a href='https://kartkatalog.geonorge.no/metadata/uuid/cb02ab77-d3e6-4500-8a92-ea67367e7734'>https://kartkatalog.geonorge.no/metadata/uuid/cb02ab77-d3e6-4500-8a92-ea67367e7734</a></p>
+    <p><a href='https://kartkatalog.geonorge.no/metadata/f015cd24-a14b-42f3-b695-848cb88d9657'>https://kartkatalog.geonorge.no/metadata/f015cd24-a14b-42f3-b695-848cb88d9657</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
 <span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>long</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>lat</span>, <span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>group</span>))
-<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_polygon.html'>geom_polygon</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>fhidata</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fhidata/man/norway_map_municips.html'>norway_map_municips</a></span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"black"</span>)
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_polygon.html'>geom_polygon</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>fhidata</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fhidata/man/norway_map_municips_b2020.html'>norway_map_municips_b2020</a></span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"black"</span>)
 <span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_void</a></span>()
 <span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_map.html'>coord_quickmap</a></span>()
-<span class='no'>q</span></div><div class='img'><img src='norway_map_municips-1.png' alt='' width='700' height='433' /></div></pre>
+<span class='no'>q</span></div><div class='img'><img src='norway_map_municips_b2020-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -174,7 +174,7 @@ libraries. This data is licensed under Creative Commons 0.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

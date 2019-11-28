@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Names of areas in Norway that currently exist. — norway_locations_current • fhidata</title>
+<title>Childhood vaccination rates in Norway (2019 borders) — norway_childhood_vax_b2019 • fhidata</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,9 @@
 
 
 
-<meta property="og:title" content="Names of areas in Norway that currently exist. — norway_locations_current" />
-<meta property="og:description" content="Names of areas in Norway that currently exist." />
+<meta property="og:title" content="Childhood vaccination rates in Norway (2019 borders) — norway_childhood_vax_b2019" />
+<meta property="og:description" content="We conveniently package vaccine coverage data taken from &quot;Kommunehelsa statistikkbank&quot;.
+This data was last updated on 2019-04-09." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -69,7 +70,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fhidata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.9.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.11.28</span>
       </span>
     </div>
 
@@ -92,7 +93,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/Datasets.html">Datasets</a>
+      <a href="../articles/maps.html">Maps</a>
     </li>
   </ul>
 </li>
@@ -115,30 +116,39 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Names of areas in Norway that currently exist.</h1>
+    <h1>Childhood vaccination rates in Norway (2019 borders)</h1>
     
-    <div class="hidden name"><code>norway_locations_current.Rd</code></div>
+    <div class="hidden name"><code>norway_childhood_vax_b2019.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Names of areas in Norway that currently exist.</p>
+    <p>We conveniently package vaccine coverage data taken from "Kommunehelsa statistikkbank".
+This data was last updated on 2019-04-09.</p>
     </div>
 
-    <pre class="usage"><span class='no'>norway_locations_current</span></pre>
+    <pre class="usage"><span class='no'>norway_childhood_vax_b2019</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     <dl class='dl-horizontal'>
-<dt>municip_code</dt><dd><p>Municipality code.</p></dd>
-<dt>municip_name</dt><dd><p>Municipality name.</p></dd>
-<dt>county_code</dt><dd><p>County code.</p></dd>
-<dt>county_name</dt><dd><p>County name.</p></dd>
+<dt>year</dt><dd><p>The middle year of a 5 year range (e.g. 2011 is the average of data from 2009-2013).</p></dd>
+<dt>location_code</dt><dd><p>The location code.</p></dd>
+<dt>age</dt><dd><p>The population age.</p></dd>
+<dt>vax</dt><dd><p>The vaccine.</p></dd>
+<dt>proportion</dt><dd><p>Proportion of people who are vaccinated.</p></dd>
+<dt>imputed</dt><dd><p>FALSE if real data. TRUE if it is the national average.</p></dd>
 
 </dl>
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p><a href='https://snl.no/kommunenummer'>https://snl.no/kommunenummer</a></p>
+    <p><a href='http://khs.fhi.no/webview/'>http://khs.fhi.no/webview/</a></p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This dataset contains national/county/municipality level (5 year average) vaccination coverage rates
+for 16 year olds for the childhood vaccination program (diphtheria, hpv, measles,
+mumps, poliomyelitis, pertussis, rubella, tetanus).</p>
+<p>Municipalities are updated for the 2019 borders.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -146,6 +156,7 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#format">Format</a></li>
       <li><a href="#source">Source</a></li>
+      <li><a href="#details">Details</a></li>
     </ul>
 
   </div>
@@ -158,7 +169,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

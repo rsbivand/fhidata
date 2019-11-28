@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Population in Norway. — norway_population_current • fhidata</title>
+<title>Label Positions for Norwegian Counties (2020 borders) — norway_map_counties_label_positions_b2020 • fhidata</title>
 
 
 <!-- jquery -->
@@ -35,10 +35,8 @@
 
 
 
-<meta property="og:title" content="Population in Norway. — norway_population_current" />
-<meta property="og:description" content="We conveniently package population data taken from Statistics Norway.
-This data is licensed under the Norwegian Licence for
-Open Government Data (NLOD) 2.0." />
+<meta property="og:title" content="Label Positions for Norwegian Counties (2020 borders) — norway_map_counties_label_positions_b2020" />
+<meta property="og:description" content="GPS coordinates for labels for Norwegian counties" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -71,7 +69,7 @@ Open Government Data (NLOD) 2.0." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fhidata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.9.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.11.28</span>
       </span>
     </div>
 
@@ -94,7 +92,7 @@ Open Government Data (NLOD) 2.0." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/Datasets.html">Datasets</a>
+      <a href="../articles/maps.html">Maps</a>
     </li>
   </ul>
 </li>
@@ -117,47 +115,41 @@ Open Government Data (NLOD) 2.0." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Population in Norway.</h1>
+    <h1>Label Positions for Norwegian Counties (2020 borders)</h1>
     
-    <div class="hidden name"><code>norway_population_current.Rd</code></div>
+    <div class="hidden name"><code>norway_map_counties_label_positions_b2020.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>We conveniently package population data taken from Statistics Norway.
-This data is licensed under the Norwegian Licence for
-Open Government Data (NLOD) 2.0.</p>
+    <p>GPS coordinates for labels for Norwegian counties</p>
     </div>
 
-    <pre class="usage"><span class='no'>norway_population_current</span></pre>
+    <pre class="usage"><span class='no'>norway_map_counties_label_positions_b2020</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     <dl class='dl-horizontal'>
-<dt>year</dt><dd><p>Year.</p></dd>
-<dt>location_code</dt><dd><p>The location code.</p></dd>
-<dt>level</dt><dd><p>cational/county/municipality.</p></dd>
-<dt>age</dt><dd><p>1 year ages from 0 to 105.</p></dd>
-<dt>pop</dt><dd><p>Number of people.</p></dd>
-<dt>imputed</dt><dd><p>FALSE if real data. TRUE if it is the last real data point carried forward.</p></dd>
+<dt>location_code</dt><dd><p>Location code (county code).</p></dd>
+<dt>long</dt><dd><p>Location code.</p></dd>
+<dt>lat</dt><dd><p>Location name.</p></dd>
 
 </dl>
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p><a href='https://www.ssb.no/en/statbank/table/07459/tableViewLayout1/'>https://www.ssb.no/en/statbank/table/07459/tableViewLayout1/</a></p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>This dataset contains county/municipality level population data
-for every age (0 to 105 years old) from 2006, and national data from 1846.
-The counties and municipalities are updated for the current redistricting.</p>
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>long</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>lat</span>))
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_polygon.html'>geom_polygon</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>fhidata</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fhidata/man/norway_map_counties_b2020.html'>norway_map_counties_b2020</a></span>, <span class='kw'>mapping</span><span class='kw'>=</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>group</span>), <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"black"</span>, <span class='kw'>fill</span><span class='kw'>=</span><span class='st'>"white"</span>)
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_text.html'>geom_text</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>fhidata</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fhidata/man/norway_map_counties_label_positions_b2020.html'>norway_map_counties_label_positions_b2020</a></span>, <span class='kw'>mapping</span><span class='kw'>=</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>label</span><span class='kw'>=</span><span class='no'>location_code</span>), <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"red"</span>)
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_void</a></span>()
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_map.html'>coord_quickmap</a></span>()
+<span class='no'>q</span></div><div class='img'><img src='norway_map_counties_label_positions_b2020-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#format">Format</a></li>
-      <li><a href="#source">Source</a></li>
-      <li><a href="#details">Details</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
@@ -170,7 +162,7 @@ The counties and municipalities are updated for the current redistricting.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

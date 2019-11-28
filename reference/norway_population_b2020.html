@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Norwegian characters in unicode — nor_char • fhidata</title>
+<title>Population in Norway (2020 borders). — norway_population_b2020 • fhidata</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,10 @@
 
 
 
-<meta property="og:title" content="Norwegian characters in unicode — nor_char" />
-<meta property="og:description" content="Norwegian characters in unicode" />
+<meta property="og:title" content="Population in Norway (2020 borders). — norway_population_b2020" />
+<meta property="og:description" content="We conveniently package population data taken from Statistics Norway.
+This data is licensed under the Norwegian Licence for
+Open Government Data (NLOD) 2.0." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -69,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fhidata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.9.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.11.28</span>
       </span>
     </div>
 
@@ -92,7 +94,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/Datasets.html">Datasets</a>
+      <a href="../articles/maps.html">Maps</a>
     </li>
   </ul>
 </li>
@@ -115,27 +117,47 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Norwegian characters in unicode</h1>
+    <h1>Population in Norway (2020 borders).</h1>
     
-    <div class="hidden name"><code>nor_char.Rd</code></div>
+    <div class="hidden name"><code>norway_population_b2020.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Norwegian characters in unicode</p>
+    <p>We conveniently package population data taken from Statistics Norway.
+This data is licensed under the Norwegian Licence for
+Open Government Data (NLOD) 2.0.</p>
     </div>
 
-    <pre class="usage"><span class='no'>nor_char</span></pre>
+    <pre class="usage"><span class='no'>norway_population_b2020</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>An object of class <code>environment</code> of length 6.</p>
+    <dl class='dl-horizontal'>
+<dt>year</dt><dd><p>Year.</p></dd>
+<dt>location_code</dt><dd><p>The location code.</p></dd>
+<dt>level</dt><dd><p>National/County/Municipality.</p></dd>
+<dt>age</dt><dd><p>1 year ages from 0 to 105.</p></dd>
+<dt>pop</dt><dd><p>Number of people.</p></dd>
+<dt>imputed</dt><dd><p>FALSE if real data. TRUE if it is the last real data point carried forward.</p></dd>
+
+</dl>
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p><a href='https://www.ssb.no/en/statbank/table/07459/tableViewLayout1/'>https://www.ssb.no/en/statbank/table/07459/tableViewLayout1/</a></p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This dataset contains national/county/municipality level population data
+for every age (0 to 105 years old) from 2006. The counties and
+municipalities are updated for the 2020 borders.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#format">Format</a></li>
+      <li><a href="#source">Source</a></li>
+      <li><a href="#details">Details</a></li>
     </ul>
 
   </div>
@@ -148,7 +170,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>

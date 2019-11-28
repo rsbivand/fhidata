@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>1x1km grids to Norwegian municipalities — senorge • fhidata</title>
+<title>1x1km grids to Norwegian municipalities (2020 borders) — senorge_b2020 • fhidata</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="1x1km grids to Norwegian municipalities — senorge" />
-<meta property="og:description" content="We classify the 1x1km grids from senorge into municipalities." />
+<meta property="og:title" content="1x1km grids to Norwegian municipalities (2020 borders) — senorge_b2020" />
+<meta property="og:description" content="We classify the 1x1km grids from senorge into municipalities (2020 borders)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fhidata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.9.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2019.11.28</span>
       </span>
     </div>
 
@@ -92,7 +92,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/Datasets.html">Datasets</a>
+      <a href="../articles/maps.html">Maps</a>
     </li>
   </ul>
 </li>
@@ -115,16 +115,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>1x1km grids to Norwegian municipalities</h1>
+    <h1>1x1km grids to Norwegian municipalities (2020 borders)</h1>
     
-    <div class="hidden name"><code>senorge.Rd</code></div>
+    <div class="hidden name"><code>senorge_b2020.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>We classify the 1x1km grids from senorge into municipalities.</p>
+    <p>We classify the 1x1km grids from senorge into municipalities (2020 borders).</p>
     </div>
 
-    <pre class="usage"><span class='no'>senorge</span></pre>
+    <pre class="usage"><span class='no'>senorge_b2020</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
@@ -140,20 +140,12 @@
 
     <p><a href='http://thredds.met.no/thredds/catalog/senorge/seNorge_2018/Archive/catalog.html'>http://thredds.met.no/thredds/catalog/senorge/seNorge_2018/Archive/catalog.html</a></p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
-<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>long</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>lat</span>, <span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>group</span>))
-<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_polygon.html'>geom_polygon</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>fhidata</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fhidata/man/norway_map_municips.html'>norway_map_municips</a></span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"black"</span>)
-<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_void</a></span>()
-<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_map.html'>coord_quickmap</a></span>()
-<span class='no'>q</span></div><div class='img'><img src='senorge-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#format">Format</a></li>
       <li><a href="#source">Source</a></li>
-      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
@@ -166,7 +158,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
 
       </footer>
