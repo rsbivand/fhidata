@@ -1,4 +1,4 @@
-#' Childhood vaccination rates in Norway
+#' Childhood vaccination rates in Norway (2019 borders)
 #'
 #' We conveniently package vaccine coverage data taken from "Kommunehelsa statistikkbank".
 #' This data was last updated on 2019-04-09.
@@ -7,7 +7,7 @@
 #' for 16 year olds for the childhood vaccination program (diphtheria, hpv, measles,
 #' mumps, poliomyelitis, pertussis, rubella, tetanus).
 #'
-#' Municipalities are updated for the 2019 redistricting.
+#' Municipalities are updated for the 2019 borders.
 #'
 #' @format
 #' \describe{
@@ -19,12 +19,13 @@
 #' \item{imputed}{FALSE if real data. TRUE if it is the national average.}
 #' }
 #' @source \url{http://khs.fhi.no/webview/}
-"norway_childhood_vax"
+"norway_childhood_vax_b2019"
 
 # Creates the childhood vaccination dataset
 # http://khs.fhi.no/webview/
 #' @import data.table
-gen_norway_childhood_vax <- function(norway_locations_long_current) {
+gen_norway_childhood_vax <- function(x_year_end) {
+  stopifnot(x_year_end %in% 2019)
 
   # variables used in data.table functions in this function
   . <- NULL
@@ -42,8 +43,12 @@ gen_norway_childhood_vax <- function(norway_locations_long_current) {
   imputed <- NULL
   # end
 
-  d <- fread(system.file("extdata", "SYSVAK_2019-04-09-14-17.csv", package = "fhidata"), encoding = "UTF-8")
-  d[GEO == 0, location_code := "norway"]
+  if(x_year_end==2019){
+    d <- fread(system.file("extdata", "SYSVAK_2019-04-09-14-17.csv", package = "fhidata"), encoding = "UTF-8")
+    norway_locs <- gen_norway_locations_long(x_year_end = x_year_end)$location_code
+    norway_locs <- norway_locs[!norway_locs %in% "norway"]
+  }
+  d[GEO == 0, location_code := "norge"]
   d[GEO > 0 & GEO < 100, location_code := glue::glue("county{X}", X = formatC(GEO, width = 2, flag = "0"))]
   d[GEO >= 100, location_code := glue::glue("municip{X}", X = formatC(GEO, width = 4, flag = "0"))]
   d[GEO >= 10000, location_code := glue::glue("district{X}", X = formatC(GEO, width = 6, flag = "0"))]
@@ -64,13 +69,13 @@ gen_norway_childhood_vax <- function(norway_locations_long_current) {
   ))]
   d <- d[, c("location_code", "year", "age", "vax", "proportion")]
   d[, imputed := FALSE]
-  national_results <- d[location_code == "norway", .(
+  national_results <- d[location_code == "norge", .(
     national = mean(proportion)
   ),
   keyby = .(year, vax)
   ]
   skeleton <- data.table(expand.grid(
-    location_code = norway_locations_long_current$location_code,
+    location_code = norway_locs,
     year = unique(d$year),
     vax = unique(d$vax),
     stringsAsFactors = F
@@ -83,7 +88,6 @@ gen_norway_childhood_vax <- function(norway_locations_long_current) {
   d[is.na(proportion), imputed := TRUE]
   d[is.na(proportion), proportion := national]
   d[, national := NULL]
-  d <- d[location_code != "norge"]
 
   setcolorder(d, c("year", "location_code", "age", "vax", "proportion", "imputed"))
 

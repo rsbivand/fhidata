@@ -1,26 +1,4 @@
-#' Population in Norway.
-#'
-#' We conveniently package population data taken from Statistics Norway.
-#' This data is licensed under the Norwegian Licence for
-#' Open Government Data (NLOD) 2.0.
-#'
-#' This dataset contains county/municipality level population data
-#' for every age (0 to 105 years old) from 2006, and national data from 1846.
-#' The counties and municipalities are updated for the current redistricting.
-#'
-#' @format
-#' \describe{
-#' \item{year}{Year.}
-#' \item{location_code}{The location code.}
-#' \item{level}{cational/county/municipality.}
-#' \item{age}{1 year ages from 0 to 105.}
-#' \item{pop}{Number of people.}
-#' \item{imputed}{FALSE if real data. TRUE if it is the last real data point carried forward.}
-#' }
-#' @source \url{https://www.ssb.no/en/statbank/table/07459/tableViewLayout1/}
-"norway_population_current"
-
-#' Population in Norway.
+#' Population in Norway (2020 borders).
 #'
 #' We conveniently package population data taken from Statistics Norway.
 #' This data is licensed under the Norwegian Licence for
@@ -28,7 +6,7 @@
 #'
 #' This dataset contains national/county/municipality level population data
 #' for every age (0 to 105 years old) from 2006. The counties and
-#' municipalities are not updated for the current redistricting.
+#' municipalities are updated for the 2020 borders.
 #'
 #' @format
 #' \describe{
@@ -40,13 +18,35 @@
 #' \item{imputed}{FALSE if real data. TRUE if it is the last real data point carried forward.}
 #' }
 #' @source \url{https://www.ssb.no/en/statbank/table/07459/tableViewLayout1/}
-"norway_population_original"
+"norway_population_b2020"
+
+#' Population in Norway (2019 borders).
+#'
+#' We conveniently package population data taken from Statistics Norway.
+#' This data is licensed under the Norwegian Licence for
+#' Open Government Data (NLOD) 2.0.
+#'
+#' This dataset contains national/county/municipality level population data
+#' for every age (0 to 105 years old) from 2006. The counties and
+#' municipalities are updated for the 2019 borders.
+#'
+#' @format
+#' \describe{
+#' \item{year}{Year.}
+#' \item{location_code}{The location code.}
+#' \item{level}{National/County/Municipality.}
+#' \item{age}{1 year ages from 0 to 105.}
+#' \item{pop}{Number of people.}
+#' \item{imputed}{FALSE if real data. TRUE if it is the last real data point carried forward.}
+#' }
+#' @source \url{https://www.ssb.no/en/statbank/table/07459/tableViewLayout1/}
+"norway_population_b2019"
 
 
 # Creates the population dataset
 # https://www.ssb.no/en/statbank/table/07459/tableViewLayout1/
 #' @import data.table
-gen_norway_population <- function(is_current_municips = TRUE) {
+gen_norway_population <- function(x_year_end, original=FALSE) {
 
   # variables used in data.table functions in this function
   . <- NULL
@@ -164,6 +164,26 @@ gen_norway_population <- function(is_current_municips = TRUE) {
   pop <- rbind(pop, pop2)
   pop[, imputed := FALSE]
 
+  if(original) return(pop)
+
+  # kommunesammenslaing
+  norway_merging <- gen_norway_municip_merging(x_year_end = x_year_end)
+  pop <- merge(
+    pop,
+    norway_merging[, c("year", "municip_code_current", "municip_code_original")],
+    by.x = c("municip_code", "year"),
+    by.y = c("municip_code_original", "year")
+  )
+  pop <- pop[, .(pop = sum(pop)),
+    keyby = .(
+      year,
+      municip_code = municip_code_current,
+      age,
+      imputed
+    )
+  ]
+
+  # imputing the future
   missingYears <- max(pop$year):(lubridate::year(lubridate::today()) + 2)
   if (length(missingYears) > 1) {
     copiedYears <- vector("list", length = length(missingYears) - 1)
@@ -176,32 +196,11 @@ gen_norway_population <- function(is_current_municips = TRUE) {
     pop <- rbind(pop, copiedYears)
   }
 
-  if (is_current_municips) {
-    norway_merging <- gen_norway_municip_merging()
-    pop <- merge(
-      pop,
-      norway_merging[, c("year", "municip_code_current", "municip_code_original")],
-      by.x = c("municip_code", "year"),
-      by.y = c("municip_code_original", "year")
-    )
-    pop <- pop[, .(pop = sum(pop)),
-      keyby = .(
-        year,
-        municip_code = municip_code_current,
-        age,
-        imputed
-      )
-    ]
-
-    file_name <- "norway_population_current.rds"
-  } else {
-    file_name <- "norway_population_original.rds"
-  }
   pop[, level := "municipality"]
 
   counties <- merge(
     pop,
-    gen_norway_locations(is_current_municips = FALSE)[, c("municip_code", "county_code")],
+    gen_norway_locations(x_year_end = x_year_end)[, c("municip_code", "county_code")],
     by = "municip_code"
   )
 

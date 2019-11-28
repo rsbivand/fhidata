@@ -13,6 +13,7 @@ gen_norway_dates_holidays <- function() {
   # variables used by data.table
   is_current <- NULL
   year_end <- NULL
+  is_holiday <- NULL
   #
 
   info <- readxl::read_excel(

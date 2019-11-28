@@ -1,0 +1,75 @@
+---
+title: "Maps"
+author: "Richard White"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{datasets}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+## County Maps
+
+```{r fig.height=7, fig.width=7}
+library(ggplot2)
+library(data.table)
+
+pd <- fhidata::norway_map_counties_b2020
+
+q <- ggplot()
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=location_code), color="black")
+q <- q + theme_void()
+q <- q + coord_quickmap()
+q
+```
+
+```{r fig.height=7, fig.width=7}
+library(ggplot2)
+library(data.table)
+
+pd <- fhidata::norway_map_counties_b2019
+
+q <- ggplot()
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=location_code), color="black")
+q <- q + theme_void()
+q <- q + coord_quickmap()
+q
+```
+
+## Municipality Maps
+
+```{r fig.height=7, fig.width=7}
+library(ggplot2)
+library(data.table)
+
+pd <- fhidata::norway_map_municips_b2020
+
+q <- ggplot()
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group), color="black", fill="white")
+q <- q + theme_void()
+q <- q + coord_quickmap()
+q
+```
+
+```{r fig.height=7, fig.width=7}
+library(ggplot2)
+library(data.table)
+
+pd <- fhidata::norway_map_municips_b2019
+
+q <- ggplot()
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group), color="black", fill="white")
+q <- q + theme_void()
+q <- q + coord_quickmap()
+q
+```
+

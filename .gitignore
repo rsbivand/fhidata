@@ -37,3 +37,7 @@ Temporary Items
 .Rhistory
 inst/doc
 *.swp
+inst/extdata/Fylker20.gfs
+inst/extdata/Fylker20.gml
+inst/extdata/Kommuner20.gfs
+inst/extdata/Kommuner20.gml

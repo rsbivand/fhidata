@@ -1,9 +1,9 @@
 #' Norwegian characters in unicode
-#' @export nor_char
-nor_char <- new.env()
-nor_char$AA <- "\u00C5"
-nor_char$aa <- "\u00E5"
-nor_char$OE <- "\u00D8"
-nor_char$oe <- "\u00F8"
-nor_char$AE <- "\u00C6"
-nor_char$ae <- "\u00E6"
+#' @export nb
+nb <- new.env()
+nb$AA <- "\u00C5"
+nb$aa <- "\u00E5"
+nb$OE <- "\u00D8"
+nb$oe <- "\u00F8"
+nb$AE <- "\u00C6"
+nb$ae <- "\u00E6"

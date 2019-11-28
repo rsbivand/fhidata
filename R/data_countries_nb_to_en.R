@@ -14,10 +14,10 @@
 # The names are Norwegian country names and the
 # values are English country names.
 gen_countries_nb_to_en <- function() {
-  faroeIslands <- paste0("F", nor_char$ae, "r", nor_char$OE, "yene")
-  austria <- paste0(nor_char$OE, "sterrike")
-  southAfrica <- paste0("S", nor_char$oe, "r-Afrika")
-  southKorea <- paste0("S", nor_char$oe, "r-Korea")
+  faroeIslands <- paste0("F", nb$ae, "r", nb$OE, "yene")
+  austria <- paste0(nb$OE, "sterrike")
+  southAfrica <- paste0("S", nb$oe, "r-Afrika")
+  southKorea <- paste0("S", nb$oe, "r-Korea")
 
   vec <- c(
     "Afghanistan" = "Afghanistan",

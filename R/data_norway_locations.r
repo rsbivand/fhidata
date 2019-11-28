@@ -1,16 +1,4 @@
-#' Names of areas in Norway that currently exist.
-#'
-#' @format
-#' \describe{
-#' \item{municip_code}{Municipality code.}
-#' \item{municip_name}{Municipality name.}
-#' \item{county_code}{County code.}
-#' \item{county_name}{County name.}
-#' }
-#' @source \url{https://snl.no/kommunenummer}
-"norway_locations_current"
-
-#' Names of areas in Norway that previously existed.
+#' Names of areas in Norway that existed in 2020.
 #'
 #' @format
 #' \describe{
@@ -20,32 +8,38 @@
 #' \item{county_name}{County name.}
 #' }
 #' @source \url{https://no.wikipedia.org/wiki/Liste_over_norske_kommunenummer}
-"norway_locations_original"
+"norway_locations_b2020"
+
+#' Names of areas in Norway that existed in 2019.
+#'
+#' @format
+#' \describe{
+#' \item{municip_code}{Municipality code.}
+#' \item{municip_name}{Municipality name.}
+#' \item{county_code}{County code.}
+#' \item{county_name}{County name.}
+#' }
+#' @source \url{https://no.wikipedia.org/wiki/Liste_over_norske_kommunenummer}
+"norway_locations_b2019"
 
 # Creates the norway_locations data.table
-gen_norway_locations <- function(is_current_municips = TRUE) {
+gen_norway_locations <- function(x_year_end) {
 
   # variables used by data.table
   is_current <- NULL
   year_end <- NULL
   #
 
-  norway_locations <- readxl::read_excel(
-    system.file("extdata", "norway_locations.xlsx", package = "fhidata")
-  )
-  setDT(norway_locations)
+  norway_locations <- gen_norway_municip_merging(x_year_end = x_year_end)
+  unique(norway_locations[,c("municip_code_current","municip_name","county_code","county_name")])
+  norway_locations <- norway_locations[year==max(year),c(
+    "municip_code_current",
+    "municip_name",
+    "county_code",
+    "county_name"
+    )]
+  norway_locations <- unique(norway_locations)
+  setnames(norway_locations, "municip_code_current", "municip_code")
 
-  norway_locations[, is_current := is.na(year_end)]
-
-  norway_locations <- unique(norway_locations
-  [
-    ,
-    c("is_current", "municip_code", "municip_name", "county_code", "county_name")
-  ])
-
-  if (is_current_municips) {
-    return(norway_locations[is_current == TRUE, -"is_current"])
-  } else {
-    return(norway_locations[, -"is_current"])
-  }
+  return(norway_locations)
 }

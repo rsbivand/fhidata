@@ -1,6 +1,6 @@
-#' 1x1km grids to Norwegian municipalities
+#' 1x1km grids to Norwegian municipalities (2020 borders)
 #'
-#' We classify the 1x1km grids from senorge into municipalities.
+#' We classify the 1x1km grids from senorge into municipalities (2020 borders).
 #'
 #' @format
 #' \describe{
@@ -10,14 +10,21 @@
 #' \item{year}{The year that location_code corresponds to.}
 #' }
 #' @source \url{http://thredds.met.no/thredds/catalog/senorge/seNorge_2018/Archive/catalog.html}
-#' @examples
-#' library(ggplot2)
-#' q <- ggplot(mapping = aes(x = long, y = lat, group = group))
-#' q <- q + geom_polygon(data = fhidata::norway_map_municips, color = "black")
-#' q <- q + theme_void()
-#' q <- q + coord_quickmap()
-#' q
-"senorge"
+"senorge_b2020"
+
+#' 1x1km grids to Norwegian municipalities (2019 borders)
+#'
+#' We classify the 1x1km grids from senorge into municipalities (2019 borders).
+#'
+#' @format
+#' \describe{
+#' \item{row}{The row of the [X,Y,time] matrix.}
+#' \item{col}{The column of the [X,Y,time] matrix.}
+#' \item{location_code}{Municipality code that this 1x1km grid belongs to.}
+#' \item{year}{The year that location_code corresponds to.}
+#' }
+#' @source \url{http://thredds.met.no/thredds/catalog/senorge/seNorge_2018/Archive/catalog.html}
+"senorge_b2019"
 
 gen_senorge <- function(norway_locations_current, norway_map_municips) {
   id <- NULL

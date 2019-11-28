@@ -29,6 +29,8 @@ Suggests: testthat,
     forcats,
     ncdf4,
     SDMTools,
-    reshape2
+    reshape2,
+    sf,
+    methods
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
