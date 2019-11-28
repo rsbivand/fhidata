@@ -43,7 +43,7 @@ gen_norway_childhood_vax <- function(x_year_end) {
   imputed <- NULL
   # end
 
-  if(x_year_end==2019){
+  if (x_year_end == 2019) {
     d <- fread(system.file("extdata", "SYSVAK_2019-04-09-14-17.csv", package = "fhidata"), encoding = "UTF-8")
     norway_locs <- gen_norway_locations_long(x_year_end = x_year_end)$location_code
     norway_locs <- norway_locs[!norway_locs %in% "norway"]

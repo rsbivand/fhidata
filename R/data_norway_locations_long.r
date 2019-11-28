@@ -20,7 +20,6 @@
 
 # Creates the norway_locations data.table
 gen_norway_locations_long <- function(x_year_end) {
-
   a1 <- data.table(location_code = "norway", location_name = "Norway")
   a2 <- data.table(location_code = "norge", location_name = "Norge")
   b <- gen_norway_locations(x_year_end = x_year_end)[, c("municip_code", "municip_name")]

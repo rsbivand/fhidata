@@ -119,8 +119,8 @@
 #' @examples
 #' library(ggplot2)
 #' q <- ggplot(mapping = aes(x = long, y = lat))
-#' q <- q + geom_polygon(data = fhidata::norway_map_counties_b2019, mapping=aes(group = group), color = "black", fill="white")
-#' q <- q + geom_text(data = fhidata::norway_map_counties_label_positions_b2019, mapping=aes(label=location_code), color = "red")
+#' q <- q + geom_polygon(data = fhidata::norway_map_counties_b2019, mapping = aes(group = group), color = "black", fill = "white")
+#' q <- q + geom_text(data = fhidata::norway_map_counties_label_positions_b2019, mapping = aes(label = location_code), color = "red")
 #' q <- q + theme_void()
 #' q <- q + coord_quickmap()
 #' q
@@ -139,17 +139,17 @@
 #' @examples
 #' library(ggplot2)
 #' q <- ggplot(mapping = aes(x = long, y = lat))
-#' q <- q + geom_polygon(data = fhidata::norway_map_counties_b2020, mapping=aes(group = group), color = "black", fill="white")
-#' q <- q + geom_text(data = fhidata::norway_map_counties_label_positions_b2020, mapping=aes(label=location_code), color = "red")
+#' q <- q + geom_polygon(data = fhidata::norway_map_counties_b2020, mapping = aes(group = group), color = "black", fill = "white")
+#' q <- q + geom_text(data = fhidata::norway_map_counties_label_positions_b2020, mapping = aes(label = location_code), color = "red")
 #' q <- q + theme_void()
 #' q <- q + coord_quickmap()
 #' q
 "norway_map_counties_label_positions_b2020"
 
-gen_norway_map_counties_label_positions <- function(x_year_end){
-  stopifnot(x_year_end %in% c("2019","2020"))
+gen_norway_map_counties_label_positions <- function(x_year_end) {
+  stopifnot(x_year_end %in% c("2019", "2020"))
 
-  if(x_year_end==2019){
+  if (x_year_end == 2019) {
     label_positions <- data.table(
       location_code = c(
         "county01", "county02", "county03", "county04",
@@ -168,7 +168,7 @@ gen_norway_map_counties_label_positions <- function(x_year_end){
         58.6, 58.4, 58.7, 60.25533, 61.6, 62.5, 66.5, 68.9, 69.6, 63
       )
     )
-  } else if(x_year_end==2020){
+  } else if (x_year_end == 2020) {
     label_positions <- data.table(
       location_code = c(
         "county30", "county03", "county34",
@@ -193,7 +193,7 @@ gen_norway_map_counties_label_positions <- function(x_year_end){
 }
 
 gen_norway_map_counties <- function(x_year_end) {
-  stopifnot(x_year_end %in% c("2019","2020"))
+  stopifnot(x_year_end %in% c("2019", "2020"))
 
   id <- NULL
   location_code <- NULL
@@ -201,17 +201,17 @@ gen_norway_map_counties <- function(x_year_end) {
   lat <- NULL
 
   require_namespace(c("geojsonio", "broom", "rmapshaper", "sp"))
-  if(x_year_end==2019){
+  if (x_year_end == 2019) {
     spdf <- geojsonio::geojson_read(
       system.file("extdata", "Fylker19.geojson", package = "fhidata"),
       what = "sp"
     )
     spdf_simple <- rmapshaper::ms_simplify(spdf, keep = 0.1)
-  } else if(x_year_end==2020){
+  } else if (x_year_end == 2020) {
     spdf <- sf::st_read(
       system.file("extdata", "Fylker20.gml", package = "fhidata"),
       layer = "Fylke"
-      )
+    )
     spdf_simple <- rmapshaper::ms_simplify(spdf, keep = 0.2)
     spdf_simple <- methods::as(spdf_simple, "Spatial")
   }
@@ -234,7 +234,7 @@ gen_norway_map_counties <- function(x_year_end) {
 }
 
 gen_norway_map_municips <- function(x_year_end) {
-  stopifnot(x_year_end %in% c("2019","2020"))
+  stopifnot(x_year_end %in% c("2019", "2020"))
 
   id <- NULL
   location_code <- NULL
@@ -243,13 +243,13 @@ gen_norway_map_municips <- function(x_year_end) {
 
   require_namespace(c("geojsonio", "broom", "rmapshaper", "sp"))
 
-  if(x_year_end==2019){
+  if (x_year_end == 2019) {
     spdf <- geojsonio::geojson_read(
       system.file("extdata", "Kommuner19.geojson", package = "fhidata"),
       what = "sp"
     )
     spdf_simple <- rmapshaper::ms_simplify(rgeos::gBuffer(spdf, byid = TRUE, width = 0), keep = 0.075)
-  } else if(x_year_end==2020){
+  } else if (x_year_end == 2020) {
     spdf <- sf::st_read(
       system.file("extdata", "Kommuner20.gml", package = "fhidata"),
       layer = "Kommune"

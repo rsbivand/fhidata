@@ -31,13 +31,13 @@ gen_norway_locations <- function(x_year_end) {
   #
 
   norway_locations <- gen_norway_municip_merging(x_year_end = x_year_end)
-  unique(norway_locations[,c("municip_code_current","municip_name","county_code","county_name")])
-  norway_locations <- norway_locations[year==max(year),c(
+  unique(norway_locations[, c("municip_code_current", "municip_name", "county_code", "county_name")])
+  norway_locations <- norway_locations[year == max(year), c(
     "municip_code_current",
     "municip_name",
     "county_code",
     "county_name"
-    )]
+  )]
   norway_locations <- unique(norway_locations)
   setnames(norway_locations, "municip_code_current", "municip_code")
 

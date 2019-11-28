@@ -46,7 +46,7 @@
 # Creates the population dataset
 # https://www.ssb.no/en/statbank/table/07459/tableViewLayout1/
 #' @import data.table
-gen_norway_population <- function(x_year_end, original=FALSE) {
+gen_norway_population <- function(x_year_end, original = FALSE) {
 
   # variables used in data.table functions in this function
   . <- NULL
@@ -164,7 +164,9 @@ gen_norway_population <- function(x_year_end, original=FALSE) {
   pop <- rbind(pop, pop2)
   pop[, imputed := FALSE]
 
-  if(original) return(pop)
+  if (original) {
+    return(pop)
+  }
 
   # kommunesammenslaing
   norway_merging <- gen_norway_municip_merging(x_year_end = x_year_end)

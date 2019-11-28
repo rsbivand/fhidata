@@ -48,7 +48,7 @@ gen_data_all <- function(base_loc) {
   save(norway_population_b2019, file = file.path(base_loc, "norway_population_b2019.rda"), compress = "xz")
 
   # norway_childhood_vax
-  norway_childhood_vax_b2019 <- gen_norway_childhood_vax(x_year_end=2019)
+  norway_childhood_vax_b2019 <- gen_norway_childhood_vax(x_year_end = 2019)
   save(norway_childhood_vax_b2019, file = file.path(base_loc, "norway_childhood_vax_b2019.rda"), compress = "xz")
 
   # other
@@ -61,10 +61,10 @@ gen_data_all <- function(base_loc) {
 
   # map labels
 
-  norway_map_counties_label_positions_b2019 <- gen_norway_map_counties_label_positions(x_year_end=2020)
-  save(norway_map_counties_label_positions_b2019, file=file.path(base_loc,"norway_map_counties_label_positions_b2019.rda"), compress = "xz")
-  norway_map_counties_label_positions_b2020 <-  gen_norway_map_counties_label_positions(x_year_end=2020)
-  save(norway_map_counties_label_positions_b2020, file=file.path(base_loc,"norway_map_counties_label_positions_b2020.rda"), compress = "xz")
+  norway_map_counties_label_positions_b2019 <- gen_norway_map_counties_label_positions(x_year_end = 2020)
+  save(norway_map_counties_label_positions_b2019, file = file.path(base_loc, "norway_map_counties_label_positions_b2019.rda"), compress = "xz")
+  norway_map_counties_label_positions_b2020 <- gen_norway_map_counties_label_positions(x_year_end = 2020)
+  save(norway_map_counties_label_positions_b2020, file = file.path(base_loc, "norway_map_counties_label_positions_b2020.rda"), compress = "xz")
 
   # norway_map_counties_b2019 <- gen_norway_map_counties(x_year_end=2019)
   # save(norway_map_counties_b2019, file=file.path("/git","/fhidata","data","norway_map_counties_b2019.rda"), compress = "xz")
@@ -86,8 +86,3 @@ gen_data_all <- function(base_loc) {
   # senorge_b2020 <- gen_senorge(norway_locations_b2020, norway_map_municips_b2020)
   # save(senorge_b2020, file=file.path(base_loc,"senorge_b2020.rda"), compress = "xz")
 }
-
-
-
-
-
