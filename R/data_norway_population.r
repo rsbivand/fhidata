@@ -234,7 +234,7 @@ gen_norway_population <- function(x_year_end, original = FALSE) {
   norway[, age := NULL]
   setnames(norway, c("year", "pop", "age"))
   norway[, level := "national"]
-  norway[, municip_code := "norway"]
+  norway[, municip_code := "norge"]
   norway[, imputed := FALSE]
   for (i in missingYears) {
     popx <- norway[year == max(year)]
