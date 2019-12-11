@@ -6,6 +6,8 @@
 #' \item{municip_name}{Municipality name.}
 #' \item{county_code}{County code.}
 #' \item{county_name}{County name.}
+#' \item{region_code}{Region code.}
+#' \item{region_name}{Region name.}
 #' }
 #' @source \url{https://no.wikipedia.org/wiki/Liste_over_norske_kommunenummer}
 "norway_locations_b2020"
@@ -18,6 +20,8 @@
 #' \item{municip_name}{Municipality name.}
 #' \item{county_code}{County code.}
 #' \item{county_name}{County name.}
+#' \item{region_code}{Region code.}
+#' \item{region_name}{Region name.}
 #' }
 #' @source \url{https://no.wikipedia.org/wiki/Liste_over_norske_kommunenummer}
 "norway_locations_b2019"
@@ -36,7 +40,9 @@ gen_norway_locations <- function(x_year_end) {
     "municip_code_current",
     "municip_name",
     "county_code",
-    "county_name"
+    "county_name",
+    "region_code",
+    "region_name"
   )]
   norway_locations <- unique(norway_locations)
   setnames(norway_locations, "municip_code_current", "municip_code")
