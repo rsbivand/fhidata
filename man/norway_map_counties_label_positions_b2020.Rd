@@ -18,8 +18,8 @@ GPS coordinates for labels for Norwegian counties
 \examples{
 library(ggplot2)
 q <- ggplot(mapping = aes(x = long, y = lat))
-q <- q + geom_polygon(data = fhidata::norway_map_counties_b2020, mapping=aes(group = group), color = "black", fill="white")
-q <- q + geom_text(data = fhidata::norway_map_counties_label_positions_b2020, mapping=aes(label=location_code), color = "red")
+q <- q + geom_polygon(data = fhidata::norway_map_counties_b2020, mapping = aes(group = group), color = "black", fill = "white")
+q <- q + geom_text(data = fhidata::norway_map_counties_label_positions_b2020, mapping = aes(label = location_code), color = "red")
 q <- q + theme_void()
 q <- q + coord_quickmap()
 q
