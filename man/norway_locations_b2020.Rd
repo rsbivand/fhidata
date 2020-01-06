@@ -9,6 +9,8 @@
 \item{municip_name}{Municipality name.}
 \item{county_code}{County code.}
 \item{county_name}{County name.}
+\item{region_code}{Region code.}
+\item{region_name}{Region name.}
 }}
 \source{
 \url{https://no.wikipedia.org/wiki/Liste_over_norske_kommunenummer}

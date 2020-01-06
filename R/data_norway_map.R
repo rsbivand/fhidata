@@ -15,7 +15,7 @@
 #' \item{id}{Non-informative id code.}
 #' \item{location_code}{Location code (county code).}
 #' }
-#' @source \url{https://kartkatalog.geonorge.no/metadata/f01922f5-bc7b-489f-918c-ca0f789c0dfa}
+#' @source \url{https://kartkatalog.geonorge.no/metadata/norske-fylker-og-kommuner-illustrasjonsdata-2020-(klippet-etter-kyst)/7408853f-eb7d-48dd-bb6c-80c7e80f7392}
 #' @examples
 #' library(ggplot2)
 #' q <- ggplot(mapping = aes(x = long, y = lat, group = group, fill = location_code))
@@ -42,7 +42,7 @@
 #' \item{id}{Non-informative id code.}
 #' \item{location_code}{Location code (municipality code).}
 #' }
-#' @source \url{https://kartkatalog.geonorge.no/metadata/f015cd24-a14b-42f3-b695-848cb88d9657}
+#' @source \url{https://kartkatalog.geonorge.no/metadata/norske-fylker-og-kommuner-illustrasjonsdata-2020-(klippet-etter-kyst)/7408853f-eb7d-48dd-bb6c-80c7e80f7392}
 #' @examples
 #' library(ggplot2)
 #' q <- ggplot(mapping = aes(x = long, y = lat, group = group))
@@ -208,12 +208,17 @@ gen_norway_map_counties <- function(x_year_end) {
     )
     spdf_simple <- rmapshaper::ms_simplify(spdf, keep = 0.1)
   } else if (x_year_end == 2020) {
-    spdf <- sf::st_read(
-      system.file("extdata", "Fylker20.gml", package = "fhidata"),
-      layer = "Fylke"
+    # spdf <- sf::st_read(
+    #   system.file("extdata", "Fylker20.gml", package = "fhidata"),
+    #   layer = "Fylke"
+    # )
+    # spdf_simple <- rmapshaper::ms_simplify(spdf, keep = 0.2)
+    # spdf_simple <- methods::as(spdf_simple, "Spatial")
+    spdf <- geojsonio::geojson_read(
+      system.file("extdata", "Fylker20.geojson", package = "fhidata"),
+      what = "sp"
     )
-    spdf_simple <- rmapshaper::ms_simplify(spdf, keep = 0.2)
-    spdf_simple <- methods::as(spdf_simple, "Spatial")
+    spdf_simple <- rmapshaper::ms_simplify(spdf, keep = 0.1)
   }
 
   spdf_fortified <- broom::tidy(spdf_simple, region = "fylkesnummer")
@@ -250,12 +255,17 @@ gen_norway_map_municips <- function(x_year_end) {
     )
     spdf_simple <- rmapshaper::ms_simplify(rgeos::gBuffer(spdf, byid = TRUE, width = 0), keep = 0.075)
   } else if (x_year_end == 2020) {
-    spdf <- sf::st_read(
-      system.file("extdata", "Kommuner20.gml", package = "fhidata"),
-      layer = "Kommune"
+    # spdf <- sf::st_read(
+    #   system.file("extdata", "Kommuner20.gml", package = "fhidata"),
+    #   layer = "Kommune"
+    # )
+    # spdf_simple <- rmapshaper::ms_simplify(spdf, keep = 0.1)
+    # spdf_simple <- methods::as(spdf_simple, "Spatial")
+    spdf <- geojsonio::geojson_read(
+      system.file("extdata", "Kommuner20.geojson", package = "fhidata"),
+      what = "sp"
     )
-    spdf_simple <- rmapshaper::ms_simplify(spdf, keep = 0.1)
-    spdf_simple <- methods::as(spdf_simple, "Spatial")
+    spdf_simple <- rmapshaper::ms_simplify(rgeos::gBuffer(spdf, byid = TRUE, width = 0), keep = 0.075)
   }
 
   spdf_fortified <- broom::tidy(spdf_simple, region = "kommunenummer")

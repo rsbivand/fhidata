@@ -15,7 +15,7 @@
 \item{location_code}{Location code (municipality code).}
 }}
 \source{
-\url{https://kartkatalog.geonorge.no/metadata/f015cd24-a14b-42f3-b695-848cb88d9657}
+\url{https://kartkatalog.geonorge.no/metadata/norske-fylker-og-kommuner-illustrasjonsdata-2020-(klippet-etter-kyst)/7408853f-eb7d-48dd-bb6c-80c7e80f7392}
 }
 \usage{
 norway_map_municips_b2020
