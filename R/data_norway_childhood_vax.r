@@ -65,6 +65,11 @@ gen_norway_childhood_vax <- function(x_year_end) {
   national <- NULL
   age <- NULL
   imputed <- NULL
+  year_merging <- NULL
+  weighting <- NULL
+  county_code_current <- NULL
+  KJONN <- NULL
+  municip_code_current <- NULL
   # end
 
   if (x_year_end == 2019) {

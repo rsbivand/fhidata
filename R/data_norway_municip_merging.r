@@ -216,6 +216,11 @@ gen_norway_municip_merging <- function(
 }
 
 gen_norway_fixing_merged_municips <- function(x_year_end, include_extra_vars = FALSE) {
+  border_end <- NULL
+  border_start <- NULL
+  municip_code_end_new <- NULL
+  weighting_new <- NULL
+
   plan <- expand.grid(
     border_start = 2000:2020,
     border_end = 2019:x_year_end
@@ -255,6 +260,7 @@ gen_norway_fixing_merged_municips <- function(x_year_end, include_extra_vars = F
 # Creates the norway_county_merging (fylkesammenslaaing) data.table
 gen_norway_county_merging <- function(x_year_end, x_year_start = 2000) {
   # variables used in data.table functions in this function
+  . <- NULL
   year_start <- NULL
   municip_code <- NULL
   municip_code_current <- NULL
@@ -268,6 +274,17 @@ gen_norway_county_merging <- function(x_year_end, x_year_start = 2000) {
   region_name <- NULL
   realEnd <- NULL
   weighting <- NULL
+  imputed <- NULL
+  pop <- NULL
+  location_code <- NULL
+  county_code_original <- NULL
+  municip_code_original <- NULL
+  county_code_current <- NULL
+  weighting_denominator_from_original <- NULL
+  border_end <- NULL
+  border_start <- NULL
+  municip_code_end_new <- NULL
+  weighting_new <- NULL
   # end
 
   municips <- gen_norway_municip_merging(

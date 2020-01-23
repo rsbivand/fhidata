@@ -8,11 +8,6 @@
 \item{municip_code_current}{The municipality code per today.}
 \item{municip_code_original}{The municipality code as of 'year'.}
 \item{year}{The year corresponding to 'municip_code_original'.}
-\item{municip_name}{The municipality name per today.}
-\item{county_code}{The county code per today.}
-\item{county_name}{The county name per today.}
-\item{region_code}{The region code per today.}
-\item{region_name}{The region name per today.}
 \item{border_start}{The year that the data has currently been redistricted to.}
 \item{border_end}{The year of the desired final redistricting.}
 \item{weighting}{The weighting that needs to be applied.}
