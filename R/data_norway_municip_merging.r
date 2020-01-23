@@ -41,11 +41,6 @@
 #' \item{municip_code_current}{The municipality code per today.}
 #' \item{municip_code_original}{The municipality code as of 'year'.}
 #' \item{year}{The year corresponding to 'municip_code_original'.}
-#' \item{municip_name}{The municipality name per today.}
-#' \item{county_code}{The county code per today.}
-#' \item{county_name}{The county name per today.}
-#' \item{region_code}{The region code per today.}
-#' \item{region_name}{The region name per today.}
 #' \item{weighting}{The weighting that needs to be applied.}
 #' }
 #' @source \url{https://no.wikipedia.org/wiki/Liste_over_norske_kommunenummer}
@@ -62,11 +57,6 @@
 #' \item{municip_code_current}{The municipality code per today.}
 #' \item{municip_code_original}{The municipality code as of 'year'.}
 #' \item{year}{The year corresponding to 'municip_code_original'.}
-#' \item{municip_name}{The municipality name per today.}
-#' \item{county_code}{The county code per today.}
-#' \item{county_name}{The county name per today.}
-#' \item{region_code}{The region code per today.}
-#' \item{region_name}{The region name per today.}
 #' \item{weighting}{The weighting that needs to be applied.}
 #' }
 #' @source \url{https://no.wikipedia.org/wiki/Liste_over_norske_kommunenummer}
@@ -87,11 +77,6 @@
 #' \item{municip_code_current}{The municipality code per today.}
 #' \item{municip_code_original}{The municipality code as of 'year'.}
 #' \item{year}{The year corresponding to 'municip_code_original'.}
-#' \item{municip_name}{The municipality name per today.}
-#' \item{county_code}{The county code per today.}
-#' \item{county_name}{The county name per today.}
-#' \item{region_code}{The region code per today.}
-#' \item{region_name}{The region name per today.}
 #' \item{border_start}{The year that the data has currently been redistricted to.}
 #' \item{border_end}{The year of the desired final redistricting.}
 #' \item{weighting}{The weighting that needs to be applied.}
@@ -100,7 +85,11 @@
 "norway_fixing_merged_municips"
 
 # Creates the norway_municip_merging (kommunesammenslaaing) data.table
-gen_norway_municip_merging <- function(x_year_end, x_year_start = 2000) {
+gen_norway_municip_merging <- function(
+  x_year_end,
+  x_year_start = 2000,
+  include_extra_vars = FALSE
+  ) {
   # variables used in data.table functions in this function
   year_start <- NULL
   municip_code <- NULL
@@ -215,10 +204,18 @@ gen_norway_municip_merging <- function(x_year_end, x_year_start = 2000) {
     )
   )
 
+  if(!include_extra_vars){
+    skeleton[,municip_name:=NULL]
+    skeleton[,county_code:=NULL]
+    skeleton[,county_name:=NULL]
+    skeleton[,region_code:=NULL]
+    skeleton[,region_name:=NULL]
+  }
+
   return(invisible(skeleton))
 }
 
-gen_norway_fixing_merged_municips <- function(x_year_end) {
+gen_norway_fixing_merged_municips <- function(x_year_end, include_extra_vars = FALSE) {
   plan <- expand.grid(
     border_start = 2000:2020,
     border_end = 2019:x_year_end
@@ -229,7 +226,11 @@ gen_norway_fixing_merged_municips <- function(x_year_end) {
   retval <- vector("list", length = nrow(plan))
   for (i in seq_along(retval)) {
     print(i)
-    temp <- gen_norway_municip_merging(x_year_end = plan$border_end[i], x_year_start = plan$border_start[i])
+    temp <- gen_norway_municip_merging(
+      x_year_end = plan$border_end[i],
+      x_year_start = plan$border_start[i],
+      include_extra_vars = include_extra_vars
+      )
     temp[, border_start := plan$border_start[i]]
     temp[, border_end := plan$border_end[i]]
 
@@ -269,7 +270,10 @@ gen_norway_county_merging <- function(x_year_end, x_year_start = 2000) {
   weighting <- NULL
   # end
 
-  municips <- gen_norway_municip_merging(x_year_end = x_year_end, x_year_start = x_year_start)
+  municips <- gen_norway_municip_merging(
+    x_year_end = x_year_end,
+    x_year_start = x_year_start
+    )
 
   pops0 <- gen_norway_population(x_year_end = x_year_end, original = TRUE)
   pops0 <- pops0[imputed == FALSE, .(pop = sum(pop)), keyby = .(municip_code, year)]
