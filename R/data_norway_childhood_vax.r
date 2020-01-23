@@ -49,7 +49,7 @@
 # http://khs.fhi.no/webview/
 #' @import data.table
 gen_norway_childhood_vax <- function(x_year_end) {
-  stopifnot(x_year_end %in% c(2019,2020))
+  stopifnot(x_year_end %in% c(2019, 2020))
 
   # variables used in data.table functions in this function
   . <- NULL
@@ -93,19 +93,19 @@ gen_norway_childhood_vax <- function(x_year_end) {
   d <- d[SPVFLAGG == 0 & ALDER == "16_16" & !stringr::str_detect(location_code, "district")]
   d[, year_merging := 2019]
 
-  dnorge <- d[stringr::str_detect(location_code,"norge")]
-  dcounty <- d[stringr::str_detect(location_code,"county")]
-  dmunicip <- d[stringr::str_detect(location_code,"municip")]
+  dnorge <- d[stringr::str_detect(location_code, "norge")]
+  dcounty <- d[stringr::str_detect(location_code, "county")]
+  dmunicip <- d[stringr::str_detect(location_code, "municip")]
 
   dcounty <- merge(
     dcounty,
-    merging_county[,c("county_code_current","county_code_original", "year", "weighting")],
-    by.x = c("location_code","year_merging"),
+    merging_county[, c("county_code_current", "county_code_original", "year", "weighting")],
+    by.x = c("location_code", "year_merging"),
     by.y = c("county_code_original", "year")
   )
-  dcounty <- dcounty[,.(
-    RATE = sum(RATE*weighting)/sum(weighting)
-  ),keyby=.(
+  dcounty <- dcounty[, .(
+    RATE = sum(RATE * weighting) / sum(weighting)
+  ), keyby = .(
     county_code_current,
     KJONN,
     ALDER,
@@ -116,13 +116,13 @@ gen_norway_childhood_vax <- function(x_year_end) {
 
   dmunicip <- merge(
     dmunicip,
-    merging_municip[,c("municip_code_current","municip_code_original", "year", "weighting")],
-    by.x = c("location_code","year_merging"),
+    merging_municip[, c("municip_code_current", "municip_code_original", "year", "weighting")],
+    by.x = c("location_code", "year_merging"),
     by.y = c("municip_code_original", "year")
   )
-  dmunicip <- dmunicip[,.(
-    RATE = sum(RATE*weighting)/sum(weighting)
-  ),keyby=.(
+  dmunicip <- dmunicip[, .(
+    RATE = sum(RATE * weighting) / sum(weighting)
+  ), keyby = .(
     municip_code_current,
     KJONN,
     ALDER,
@@ -131,7 +131,7 @@ gen_norway_childhood_vax <- function(x_year_end) {
   )]
   setnames(dmunicip, "municip_code_current", "location_code")
 
-  d <- rbind(dnorge,dcounty,dmunicip, fill=T)
+  d <- rbind(dnorge, dcounty, dmunicip, fill = T)
 
   d[, age := 16]
   d[, proportion := RATE / 100]
