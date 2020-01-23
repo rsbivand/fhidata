@@ -51,6 +51,9 @@ gen_data_all <- function(base_loc) {
   norway_childhood_vax_b2019 <- gen_norway_childhood_vax(x_year_end = 2019)
   save(norway_childhood_vax_b2019, file = file.path(base_loc, "norway_childhood_vax_b2019.rda"), compress = "xz")
 
+  norway_childhood_vax_b2020 <- gen_norway_childhood_vax(x_year_end = 2020)
+  save(norway_childhood_vax_b2020, file = file.path(base_loc, "norway_childhood_vax_b2020.rda"), compress = "xz")
+
   # other
 
   countries_nb_to_en <- gen_countries_nb_to_en()
