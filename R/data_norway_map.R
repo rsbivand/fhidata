@@ -302,8 +302,8 @@
 #' q <- ggplot()
 #' q <- q + geom_polygon(
 #'   data = pd,
-#'   aes( x = long, y = lat, group = group, fill=location_code),
-#'   color="black"
+#'   aes(x = long, y = lat, group = group, fill = location_code),
+#'   color = "black"
 #' )
 #' q <- q + annotate(
 #'   "text",
@@ -331,8 +331,8 @@
 #' q <- ggplot()
 #' q <- q + geom_polygon(
 #'   data = pd,
-#'   aes( x = long, y = lat, group = group, fill=location_code),
-#'   color="black"
+#'   aes(x = long, y = lat, group = group, fill = location_code),
+#'   color = "black"
 #' )
 #' q <- q + annotate(
 #'   "text",
@@ -454,15 +454,15 @@ gen_norway_map_counties <- function(x_year_end, insert = FALSE) {
   spdf_fortified[, long := spgeo$long]
   spdf_fortified[, lat := spgeo$lat]
 
-  if(insert){
+  if (insert) {
     extra <- spdf_fortified[location_code %in% c("county03")]
-    extra[,long_center := mean(long), by=.(location_code)]
-    extra[,lat_center := mean(lat), by=.(location_code)]
-    extra[,long := long + 10 + (long - long_center)*10]
-    extra[,lat := lat + 2 + (lat - lat_center)*10]
-    extra[,long_center := NULL]
-    extra[,lat_center := NULL]
-    extra[, group := paste0("x",group)]
+    extra[, long_center := mean(long), by = .(location_code)]
+    extra[, lat_center := mean(lat), by = .(location_code)]
+    extra[, long := long + 10 + (long - long_center) * 10]
+    extra[, lat := lat + 2 + (lat - lat_center) * 10]
+    extra[, long_center := NULL]
+    extra[, lat_center := NULL]
+    extra[, group := paste0("x", group)]
 
     spdf_fortified <- rbind(spdf_fortified, extra)
   }
@@ -518,15 +518,15 @@ gen_norway_map_municips <- function(x_year_end, insert = FALSE) {
   spdf_fortified[, long := spgeo$long]
   spdf_fortified[, lat := spgeo$lat]
 
-  if(insert){
+  if (insert) {
     extra <- spdf_fortified[stringr::str_detect(location_code, "municip0[3]")]
-    extra[,long_center := mean(long), by=.(location_code)]
-    extra[,lat_center := mean(lat), by=.(location_code)]
-    extra[,long := long + 10 + (long - long_center)*10]
-    extra[,lat := lat + 2 + (lat - lat_center)*10]
-    extra[,long_center := NULL]
-    extra[,lat_center := NULL]
-    extra[, group := paste0("x",group)]
+    extra[, long_center := mean(long), by = .(location_code)]
+    extra[, lat_center := mean(lat), by = .(location_code)]
+    extra[, long := long + 10 + (long - long_center) * 10]
+    extra[, lat := lat + 2 + (lat - lat_center) * 10]
+    extra[, long_center := NULL]
+    extra[, lat_center := NULL]
+    extra[, group := paste0("x", group)]
 
     spdf_fortified <- rbind(spdf_fortified, extra)
   }
