@@ -31,6 +31,7 @@ q <- ggplot()
 q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=location_code), color="black")
 q <- q + theme_void()
 q <- q + coord_quickmap()
+q <- q + labs(title = "Norwegian counties with 2020 borders and no insert")
 q
 ```
 
@@ -44,6 +45,7 @@ q <- ggplot()
 q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=location_code), color="black")
 q <- q + theme_void()
 q <- q + coord_quickmap()
+q <- q + labs(title = "Norwegian counties with 2019 borders and no insert")
 q
 ```
 
@@ -65,6 +67,7 @@ q <- q + annotate(
   )
 q <- q + theme_void()
 q <- q + coord_quickmap()
+q <- q + labs(title = "Norwegian counties with 2020 borders and an insert for Oslo")
 q
 ```
 
@@ -84,6 +87,7 @@ q <- q + annotate(
   )
 q <- q + theme_void()
 q <- q + coord_quickmap()
+q <- q + labs(title = "Norwegian counties with 2019 borders and an insert for Oslo")
 q
 ```
 
@@ -99,6 +103,7 @@ q <- ggplot()
 q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group), color="black", fill="white")
 q <- q + theme_void()
 q <- q + coord_quickmap()
+q <- q + labs(title = "Norwegian municipalities with 2020 borders and no insert for Oslo")
 q
 ```
 
@@ -112,6 +117,7 @@ q <- ggplot()
 q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group), color="black", fill="white")
 q <- q + theme_void()
 q <- q + coord_quickmap()
+q <- q + labs(title = "Norwegian municipalities with 2019 borders and no insert for Oslo")
 q
 ```
 
@@ -133,6 +139,7 @@ q <- q + annotate(
 )
 q <- q + theme_void()
 q <- q + coord_quickmap()
+q <- q + labs(title = "Norwegian municipalities with 2020 borders and an insert for Oslo")
 q
 ```
 
@@ -152,6 +159,7 @@ q <- q + annotate(
 )
 q <- q + theme_void()
 q <- q + coord_quickmap()
+q <- q + labs(title = "Norwegian municipalities with 2019 borders and an insert for Oslo")
 q
 ```
 
