@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Structural Data for Norway">
-<meta property="og:description" content="Provides structural data for Norway. Datasets relating to maps, population in municipalities, vaccination coverage for childhood vaccines, municipality/county matching, and how different municipalities have merged/redistricted over time from 2006 to 2019.">
+<meta property="og:description" content="Provides structural data for Norway. Datasets relating to maps, population in municipalities, vaccination coverage for childhood vaccines, municipality/county matching, and how different municipalities have merged/redistricted over time from 2006 to 2020.">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">fhidata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2020.1.23</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2020.1.28</span>
       </span>
     </div>
 
@@ -74,16 +74,39 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
+
 <div id="fhidata" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#fhidata" class="anchor"></a>fhidata</h1></div>
+<p>Provides structural data for Norway.</p>
+<p>Datasets relating to maps, population in municipalities, vaccination coverage for childhood vaccines, municipality/county matching, and how different municipalities have merged/redistricted over time from 2006 to 2020.</p>
+</div>
+<div id="fhiverse" class="section level1">
+<h1 class="hasAnchor">
+<a href="#fhiverse" class="anchor"></a>fhiverse</h1>
+<p>The <code>fhiverse</code> is a set of R packages developed by the Norwegian Institute of Public Health to help solve problems relating to:</p>
+<ul>
+<li>structural data in Norway (e.g. maps, population, redistricting)</li>
+<li>convenience functions for Norwegian researchers (e.g. Norwgian formatting, Norwegian characters)</li>
+<li>analysis planning (especially for making graphs/tables for reports)</li>
+<li>file structures in projects</li>
+<li>styleguides/recommendations for FHI employees</li>
+</ul>
 <p>If you want to install the dev version, run <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_profile()</a></code> to edit your <code>.Rprofile</code>. Then write in:</p>
 <pre><code><a href="https://rdrr.io/r/base/options.html">options(repos=structure(c(
   FHI="https://folkehelseinstituttet.github.io/drat/",
   CRAN="https://cran.rstudio.com"
 )))</a></code></pre>
-<p>Save the file and restart R. This will allow you to install <code>fhidata</code> from the FHI registry instead of CRAN.</p>
+<p>Save the file and restart R. This will allow you to install <code>fhiverse</code> packages from the FHI registry.</p>
+<p>Current <code>fhiverse</code> packages are:</p>
+<ul>
+<li><a href="https://folkehelseinstituttet.github.io/fhi">fhi</a></li>
+<li><a href="https://folkehelseinstituttet.github.io/fhi">fhidata</a></li>
+<li><a href="https://folkehelseinstituttet.github.io/fhi">fhiplot</a></li>
+<li><a href="https://folkehelseinstituttet.github.io/fhi">plnr</a></li>
+</ul>
 </div>
+
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

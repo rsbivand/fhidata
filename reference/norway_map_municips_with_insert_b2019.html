@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • fhidata</title>
+<title>Maps of Norwegian municipalities with insert (2019 borders) — norway_map_municips_with_insert_b2019 • fhidata</title>
 
 
 <!-- jquery -->
@@ -35,7 +35,11 @@
 
 
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Maps of Norwegian municipalities with insert (2019 borders) — norway_map_municips_with_insert_b2019" />
+<meta property="og:description" content="We conveniently package map datasets for Norwegian municipalities
+(taken from Geonorge) that can be used in ggplot2 without needing any geo
+libraries. This data is licensed under Creative Commons 0." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -54,7 +58,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -113,75 +117,57 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
-      
+    <h1>Maps of Norwegian municipalities with insert (2019 borders)</h1>
+    
+    <div class="hidden name"><code>norway_map_municips_with_insert_b2019.Rd</code></div>
     </div>
 
-    <div id="fhidata-2020-1-28" class="section level1">
-<h1 class="page-header">
-<a href="#fhidata-2020-1-28" class="anchor"></a>fhidata 2020.1.28<small> Unreleased </small>
-</h1>
-<ul>
-<li>Included maps with inserts for Oslo</li>
-</ul>
-</div>
-    <div id="fhidata-2020-1-23" class="section level1">
-<h1 class="page-header">
-<a href="#fhidata-2020-1-23" class="anchor"></a>fhidata 2020.1.23<small> Unreleased </small>
-</h1>
-<ul>
-<li>Upgraded to 2020 borders</li>
-<li>Now most datasets end in either "_b2020" (2020 borders) or "_b2019" (2019 borders)</li>
-</ul>
-</div>
-    <div id="fhidata-2019-8-27" class="section level1">
-<h1 class="page-header">
-<a href="#fhidata-2019-8-27" class="anchor"></a>fhidata 2019.8.27<small> 2019-08-29 </small>
-</h1>
-<ul>
-<li>Including national population data from 1846 (instead of 2006)</li>
-</ul>
-</div>
-    <div id="fhidata-2019-6-24" class="section level1">
-<h1 class="page-header">
-<a href="#fhidata-2019-6-24" class="anchor"></a>fhidata 2019.6.24<small> 2019-06-24 </small>
-</h1>
-<ul>
-<li>Including childhood vaccination data.</li>
-</ul>
-</div>
-    <div id="fhidata-2019-5-19" class="section level1">
-<h1 class="page-header">
-<a href="#fhidata-2019-5-19" class="anchor"></a>fhidata 2019.5.19<small> 2019-05-21 </small>
-</h1>
-<ul>
-<li>Switching map files from UTM to lat/long coordinates.</li>
-</ul>
-</div>
-    <div id="fhidata-2019-4-2" class="section level1">
-<h1 class="page-header">
-<a href="#fhidata-2019-4-2" class="anchor"></a>fhidata 2019.4.2<small> 2019-04-04 </small>
-</h1>
-<ul>
-<li>Submission to CRAN.</li>
-</ul>
-</div>
-  </div>
+    <div class="ref-description">
+    <p>We conveniently package map datasets for Norwegian municipalities
+(taken from Geonorge) that can be used in ggplot2 without needing any geo
+libraries. This data is licensed under Creative Commons 0.</p>
+    </div>
 
+    <pre class="usage"><span class='no'>norway_map_municips_with_insert_b2019</span></pre>
+
+
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <dl class='dl-horizontal'>
+<dt>long</dt><dd><p>Location code.</p></dd>
+<dt>lat</dt><dd><p>Location name.</p></dd>
+<dt>order</dt><dd><p>The order that this line should be plotted in.</p></dd>
+<dt>hole</dt><dd><p>Geodata. Not used.</p></dd>
+<dt>piece</dt><dd><p>Geodata. Not used.</p></dd>
+<dt>group</dt><dd><p>Needs to be used as 'group' aesthetic in ggplot2.</p></dd>
+<dt>id</dt><dd><p>Non-informative id code.</p></dd>
+<dt>location_code</dt><dd><p>Location code (municipality code).</p></dd>
+
+</dl>
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p><a href='https://kartkatalog.geonorge.no/metadata/uuid/cb02ab77-d3e6-4500-8a92-ea67367e7734'>https://kartkatalog.geonorge.no/metadata/uuid/cb02ab77-d3e6-4500-8a92-ea67367e7734</a></p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>long</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>lat</span>, <span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>group</span>))
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_polygon.html'>geom_polygon</a></span>(
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>fhidata</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fhidata/man/norway_map_municips_with_insert_b2019.html'>norway_map_municips_with_insert_b2019</a></span>,
+  <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"black"</span>
+)
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_void</a></span>()
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_map.html'>coord_quickmap</a></span>()
+<span class='no'>q</span></div><div class='img'><img src='norway_map_municips_with_insert_b2019-1.png' alt='' width='700' height='433' /></div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#fhidata-2020-1-28">2020.1.28</a></li>
-        <li><a href="#fhidata-2020-1-23">2020.1.23</a></li>
-        <li><a href="#fhidata-2019-8-27">2019.8.27</a></li>
-        <li><a href="#fhidata-2019-6-24">2019.6.24</a></li>
-        <li><a href="#fhidata-2019-5-19">2019.5.19</a></li>
-        <li><a href="#fhidata-2019-4-2">2019.4.2</a></li>
-      </ul>
-    </div>
-  </div>
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#format">Format</a></li>
+      <li><a href="#source">Source</a></li>
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
+  </div>
 </div>
 
 
