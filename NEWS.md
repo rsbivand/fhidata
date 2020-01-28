@@ -1,3 +1,7 @@
+# fhidata 2020.1.28
+
+- Included maps with inserts for Oslo
+
 # fhidata 2020.1.23
 
 - Upgraded to 2020 borders

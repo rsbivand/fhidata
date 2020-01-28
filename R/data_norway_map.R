@@ -1,3 +1,5 @@
+###### 2020 WITHOUT INSERTS
+
 #' Maps of Norwegian Counties (2020 borders)
 #'
 #' We conveniently package map datasets for Norwegian counties
@@ -51,6 +53,64 @@
 #' q <- q + coord_quickmap()
 #' q
 "norway_map_municips_b2020"
+
+###### 2020 WITH INSERTS
+
+#' Maps of Norwegian counties with insert (2020 borders)
+#'
+#' We conveniently package map datasets for Norwegian counties
+#' (taken from Geonorge) that can be used in ggplot2 without needing any geo
+#' libraries. This data is licensed under Creative Commons BY 4.0 (CC BY 4.0).
+#'
+#' @format
+#' \describe{
+#' \item{long}{Location code.}
+#' \item{lat}{Location name.}
+#' \item{order}{The order that this line should be plotted in.}
+#' \item{hole}{Geodata. Not used.}
+#' \item{piece}{Geodata. Not used.}
+#' \item{group}{Needs to be used as 'group' aesthetic in ggplot2.}
+#' \item{id}{Non-informative id code.}
+#' \item{location_code}{Location code (county code).}
+#' }
+#' @source \url{https://kartkatalog.geonorge.no/metadata/norske-fylker-og-kommuner-illustrasjonsdata-2020-(klippet-etter-kyst)/7408853f-eb7d-48dd-bb6c-80c7e80f7392}
+#' @examples
+#' library(ggplot2)
+#' q <- ggplot(mapping = aes(x = long, y = lat, group = group, fill = location_code))
+#' q <- q + geom_polygon(data = fhidata::norway_map_counties_with_insert_b2020, color = "black")
+#' q <- q + theme_void()
+#' q <- q + coord_quickmap()
+#' q
+"norway_map_counties_with_insert_b2020"
+
+#' Maps of Norwegian municipalities with insert (2020 borders)
+#'
+#' We conveniently package map datasets for Norwegian municipalities
+#' (taken from Geonorge) that can be used in ggplot2 without needing any geo
+#' libraries. This data is licensed under Creative Commons BY 4.0 (CC BY 4.0).
+#'
+#' @format
+#' \describe{
+#' \item{long}{Location code.}
+#' \item{lat}{Location name.}
+#' \item{order}{The order that this line should be plotted in.}
+#' \item{hole}{Geodata. Not used.}
+#' \item{piece}{Geodata. Not used.}
+#' \item{group}{Needs to be used as 'group' aesthetic in ggplot2.}
+#' \item{id}{Non-informative id code.}
+#' \item{location_code}{Location code (municipality code).}
+#' }
+#' @source \url{https://kartkatalog.geonorge.no/metadata/norske-fylker-og-kommuner-illustrasjonsdata-2020-(klippet-etter-kyst)/7408853f-eb7d-48dd-bb6c-80c7e80f7392}
+#' @examples
+#' library(ggplot2)
+#' q <- ggplot(mapping = aes(x = long, y = lat, group = group))
+#' q <- q + geom_polygon(data = fhidata::norway_map_municips_with_insert_b2020, color = "black")
+#' q <- q + theme_void()
+#' q <- q + coord_quickmap()
+#' q
+"norway_map_municips_with_insert_b2020"
+
+###### 2019 WITHOUT INSERTS
 
 #' Maps of Norwegian Counties (2019 borders)
 #'
@@ -106,34 +166,66 @@
 #' q
 "norway_map_municips_b2019"
 
-#' Label Positions for Norwegian Counties (2019 borders)
+###### 2019 WITH INSERTS
+
+#' Maps of Norwegian counties with inserts (2019 borders)
 #'
-#' GPS coordinates for labels for Norwegian counties
+#' We conveniently package map datasets for Norwegian counties
+#' (taken from Geonorge) that can be used in ggplot2 without needing any geo
+#' libraries. This data is licensed under Creative Commons 0.
 #'
 #' @format
 #' \describe{
-#' \item{location_code}{Location code (county code).}
 #' \item{long}{Location code.}
 #' \item{lat}{Location name.}
+#' \item{order}{The order that this line should be plotted in.}
+#' \item{hole}{Geodata. Not used.}
+#' \item{piece}{Geodata. Not used.}
+#' \item{group}{Needs to be used as 'group' aesthetic in ggplot2.}
+#' \item{id}{Non-informative id code.}
+#' \item{location_code}{Location code (county code).}
 #' }
+#' @source \url{https://kartkatalog.geonorge.no/metadata/uuid/cb02ab77-d3e6-4500-8a92-ea67367e7734}
 #' @examples
 #' library(ggplot2)
-#' q <- ggplot(mapping = aes(x = long, y = lat))
+#' q <- ggplot(mapping = aes(x = long, y = lat, group = group, fill = location_code))
+#' q <- q + geom_polygon(data = fhidata::norway_map_counties_with_insert_b2019, color = "black")
+#' q <- q + theme_void()
+#' q <- q + coord_quickmap()
+#' q
+"norway_map_counties_with_insert_b2019"
+
+#' Maps of Norwegian municipalities with insert (2019 borders)
+#'
+#' We conveniently package map datasets for Norwegian municipalities
+#' (taken from Geonorge) that can be used in ggplot2 without needing any geo
+#' libraries. This data is licensed under Creative Commons 0.
+#'
+#' @format
+#' \describe{
+#' \item{long}{Location code.}
+#' \item{lat}{Location name.}
+#' \item{order}{The order that this line should be plotted in.}
+#' \item{hole}{Geodata. Not used.}
+#' \item{piece}{Geodata. Not used.}
+#' \item{group}{Needs to be used as 'group' aesthetic in ggplot2.}
+#' \item{id}{Non-informative id code.}
+#' \item{location_code}{Location code (municipality code).}
+#' }
+#' @source \url{https://kartkatalog.geonorge.no/metadata/uuid/cb02ab77-d3e6-4500-8a92-ea67367e7734}
+#' @examples
+#' library(ggplot2)
+#' q <- ggplot(mapping = aes(x = long, y = lat, group = group))
 #' q <- q + geom_polygon(
-#'   data = fhidata::norway_map_counties_b2019,
-#'   mapping = aes(group = group),
-#'   color = "black",
-#'   fill = "white"
-#' )
-#' q <- q + geom_text(
-#'   data = fhidata::norway_map_counties_label_positions_b2019,
-#'   mapping = aes(label = location_code),
-#'   color = "red"
+#'   data = fhidata::norway_map_municips_with_insert_b2019,
+#'   color = "black"
 #' )
 #' q <- q + theme_void()
 #' q <- q + coord_quickmap()
 #' q
-"norway_map_counties_label_positions_b2019"
+"norway_map_municips_with_insert_b2019"
+
+#### LABEL POSITIONS
 
 #' Label Positions for Norwegian Counties (2020 borders)
 #'
@@ -163,6 +255,95 @@
 #' q <- q + coord_quickmap()
 #' q
 "norway_map_counties_label_positions_b2020"
+
+#' Label Positions for Norwegian Counties (2019 borders)
+#'
+#' GPS coordinates for labels for Norwegian counties
+#'
+#' @format
+#' \describe{
+#' \item{location_code}{Location code (county code).}
+#' \item{long}{Location code.}
+#' \item{lat}{Location name.}
+#' }
+#' @examples
+#' library(ggplot2)
+#' q <- ggplot(mapping = aes(x = long, y = lat))
+#' q <- q + geom_polygon(
+#'   data = fhidata::norway_map_counties_b2019,
+#'   mapping = aes(group = group),
+#'   color = "black",
+#'   fill = "white"
+#' )
+#' q <- q + geom_text(
+#'   data = fhidata::norway_map_counties_label_positions_b2019,
+#'   mapping = aes(label = location_code),
+#'   color = "red"
+#' )
+#' q <- q + theme_void()
+#' q <- q + coord_quickmap()
+#' q
+"norway_map_counties_label_positions_b2019"
+
+#### TITLE POSITIONS
+
+#' Title Positions for Inserts (2020 borders)
+#'
+#' GPS coordinates for inserts for Norwegian maps
+#'
+#' @format
+#' \describe{
+#' \item{long}{Location code.}
+#' \item{lat}{Location name.}
+#' }
+#' @examples
+#' library(ggplot2)
+#' pd <- fhidata::norway_map_counties_with_insert_b2020
+#' q <- ggplot()
+#' q <- q + geom_polygon(
+#'   data = pd,
+#'   aes( x = long, y = lat, group = group, fill=location_code),
+#'   color="black"
+#' )
+#' q <- q + annotate(
+#'   "text",
+#'   x = fhidata::norway_map_insert_title_position_b2020$long,
+#'   y = fhidata::norway_map_insert_title_position_b2020$lat,
+#'   label = "Oslo"
+#' )
+#' q <- q + theme_void()
+#' q <- q + coord_quickmap()
+#' q
+"norway_map_insert_title_position_b2020"
+
+#' Title Positions for Inserts (2019 borders)
+#'
+#' GPS coordinates for inserts for Norwegian maps
+#'
+#' @format
+#' \describe{
+#' \item{long}{Location code.}
+#' \item{lat}{Location name.}
+#' }
+#' @examples
+#' library(ggplot2)
+#' pd <- fhidata::norway_map_counties_with_insert_b2019
+#' q <- ggplot()
+#' q <- q + geom_polygon(
+#'   data = pd,
+#'   aes( x = long, y = lat, group = group, fill=location_code),
+#'   color="black"
+#' )
+#' q <- q + annotate(
+#'   "text",
+#'   x = fhidata::norway_map_counties_with_insert_b2019$long,
+#'   y = fhidata::norway_map_counties_with_insert_b2019$lat,
+#'   label = "Oslo"
+#' )
+#' q <- q + theme_void()
+#' q <- q + coord_quickmap()
+#' q
+"norway_map_insert_title_position_b2019"
 
 gen_norway_map_counties_label_positions <- function(x_year_end) {
   stopifnot(x_year_end %in% c("2019", "2020"))
@@ -210,13 +391,33 @@ gen_norway_map_counties_label_positions <- function(x_year_end) {
   return(label_positions)
 }
 
-gen_norway_map_counties <- function(x_year_end) {
+gen_norway_map_insert_title_position <- function(x_year_end) {
   stopifnot(x_year_end %in% c("2019", "2020"))
 
+  label_positions <- data.table(
+    long = c(
+      19.5
+    ),
+    lat = c(
+      64.75
+    )
+  )
+
+  return(label_positions)
+}
+
+# insert for oslo/akershus?
+gen_norway_map_counties <- function(x_year_end, insert = FALSE) {
+  stopifnot(x_year_end %in% c("2019", "2020"))
+
+  . <- NULL
   id <- NULL
   location_code <- NULL
   long <- NULL
   lat <- NULL
+  long_center <- NULL
+  lat_center <- NULL
+  group <- NULL
 
   require_namespace(c("geojsonio", "broom", "rmapshaper", "sp"))
   if (x_year_end == 2019) {
@@ -253,16 +454,33 @@ gen_norway_map_counties <- function(x_year_end) {
   spdf_fortified[, long := spgeo$long]
   spdf_fortified[, lat := spgeo$lat]
 
+  if(insert){
+    extra <- spdf_fortified[location_code %in% c("county03")]
+    extra[,long_center := mean(long), by=.(location_code)]
+    extra[,lat_center := mean(lat), by=.(location_code)]
+    extra[,long := long + 10 + (long - long_center)*10]
+    extra[,lat := lat + 2 + (lat - lat_center)*10]
+    extra[,long_center := NULL]
+    extra[,lat_center := NULL]
+    extra[, group := paste0("x",group)]
+
+    spdf_fortified <- rbind(spdf_fortified, extra)
+  }
+
   return(invisible(spdf_fortified))
 }
 
-gen_norway_map_municips <- function(x_year_end) {
+gen_norway_map_municips <- function(x_year_end, insert = FALSE) {
   stopifnot(x_year_end %in% c("2019", "2020"))
 
+  . <- NULL
   id <- NULL
   location_code <- NULL
   long <- NULL
   lat <- NULL
+  long_center <- NULL
+  lat_center <- NULL
+  group <- NULL
 
   require_namespace(c("geojsonio", "broom", "rmapshaper", "sp"))
 
@@ -299,6 +517,19 @@ gen_norway_map_municips <- function(x_year_end) {
 
   spdf_fortified[, long := spgeo$long]
   spdf_fortified[, lat := spgeo$lat]
+
+  if(insert){
+    extra <- spdf_fortified[stringr::str_detect(location_code, "municip0[3]")]
+    extra[,long_center := mean(long), by=.(location_code)]
+    extra[,lat_center := mean(lat), by=.(location_code)]
+    extra[,long := long + 10 + (long - long_center)*10]
+    extra[,lat := lat + 2 + (lat - lat_center)*10]
+    extra[,long_center := NULL]
+    extra[,lat_center := NULL]
+    extra[, group := paste0("x",group)]
+
+    spdf_fortified <- rbind(spdf_fortified, extra)
+  }
 
   return(invisible(spdf_fortified))
 }

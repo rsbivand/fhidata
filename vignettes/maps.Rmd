@@ -5,8 +5,10 @@ date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{datasets}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include = FALSE}
@@ -17,7 +19,7 @@ knitr::opts_chunk$set(
 ```
 
 
-## County Maps
+## County Maps Without Inserts
 
 ```{r fig.height=7, fig.width=7}
 library(ggplot2)
@@ -45,7 +47,47 @@ q <- q + coord_quickmap()
 q
 ```
 
-## Municipality Maps
+## County Maps With Inserts
+
+```{r fig.height=7, fig.width=7}
+library(ggplot2)
+library(data.table)
+
+pd <- fhidata::norway_map_counties_with_insert_b2020
+
+q <- ggplot()
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=location_code), color="black")
+q <- q + annotate(
+  "text", 
+  x = fhidata::norway_map_insert_title_position_b2020$long, 
+  y = fhidata::norway_map_insert_title_position_b2020$lat,
+  label = "Oslo"
+  )
+q <- q + theme_void()
+q <- q + coord_quickmap()
+q
+```
+
+```{r fig.height=7, fig.width=7}
+library(ggplot2)
+library(data.table)
+
+pd <- fhidata::norway_map_counties_with_insert_b2019
+
+q <- ggplot()
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=location_code), color="black")
+q <- q + annotate(
+  "text", 
+  x = fhidata::norway_map_insert_title_position_b2019$long, 
+  y = fhidata::norway_map_insert_title_position_b2019$lat,
+  label = "Oslo"
+  )
+q <- q + theme_void()
+q <- q + coord_quickmap()
+q
+```
+
+## Municipality Maps Without Inserts
 
 ```{r fig.height=7, fig.width=7}
 library(ggplot2)
@@ -68,6 +110,46 @@ pd <- fhidata::norway_map_municips_b2019
 
 q <- ggplot()
 q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group), color="black", fill="white")
+q <- q + theme_void()
+q <- q + coord_quickmap()
+q
+```
+
+## Municipality Maps With Inserts
+
+```{r fig.height=7, fig.width=7}
+library(ggplot2)
+library(data.table)
+
+pd <- fhidata::norway_map_municips_with_insert_b2020
+
+q <- ggplot()
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group), color="black", fill="white")
+q <- q + annotate(
+  "text", 
+  x = fhidata::norway_map_insert_title_position_b2020$long, 
+  y = fhidata::norway_map_insert_title_position_b2020$lat,
+  label = "Oslo"
+)
+q <- q + theme_void()
+q <- q + coord_quickmap()
+q
+```
+
+```{r fig.height=7, fig.width=7}
+library(ggplot2)
+library(data.table)
+
+pd <- fhidata::norway_map_municips_with_insert_b2019
+
+q <- ggplot()
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group), color="black", fill="white")
+q <- q + annotate(
+  "text", 
+  x = fhidata::norway_map_insert_title_position_b2019$long, 
+  y = fhidata::norway_map_insert_title_position_b2019$lat,
+  label = "Oslo"
+)
 q <- q + theme_void()
 q <- q + coord_quickmap()
 q

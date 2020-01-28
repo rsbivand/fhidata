@@ -103,6 +103,8 @@ gen_norway_municip_merging <- function(
   region_name <- NULL
   realEnd <- NULL
   weighting <- NULL
+  municip_code_end_new <- NULL
+  weighting_new <- NULL
   # end
 
   masterData <- data.table(readxl::read_excel(system.file("extdata", "norway_locations.xlsx", package = "fhidata")))
