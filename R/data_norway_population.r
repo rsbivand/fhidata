@@ -236,7 +236,7 @@ gen_norway_population <- function(x_year_end, original = FALSE) {
   norway[, level := "national"]
   norway[, municip_code := "norge"]
   norway[, imputed := FALSE]
-  missingYearsNational <- (max(norway$year)+1):(lubridate::year(lubridate::today()) + 2)
+  missingYearsNational <- (max(norway$year) + 1):(lubridate::year(lubridate::today()) + 2)
   for (i in missingYearsNational) {
     popx <- norway[year == max(year)]
     popx[, year := i]
