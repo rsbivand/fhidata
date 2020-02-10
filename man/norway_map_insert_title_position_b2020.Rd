@@ -20,8 +20,8 @@ pd <- fhidata::norway_map_counties_with_insert_b2020
 q <- ggplot()
 q <- q + geom_polygon(
   data = pd,
-  aes( x = long, y = lat, group = group, fill=location_code),
-  color="black"
+  aes(x = long, y = lat, group = group, fill = location_code),
+  color = "black"
 )
 q <- q + annotate(
   "text",
