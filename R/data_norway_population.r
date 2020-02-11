@@ -198,7 +198,7 @@ gen_norway_population <- function(x_year_end, original = FALSE) {
     pop <- rbind(pop, copiedYears)
   }
 
-  pop[, level := "municipality"]
+  pop[, level := "municip"]
 
   counties <- merge(
     pop,
@@ -233,7 +233,7 @@ gen_norway_population <- function(x_year_end, original = FALSE) {
   norway[, x := as.numeric(stringr::str_extract(age, "^[0-9][0-9][0-9]"))]
   norway[, age := NULL]
   setnames(norway, c("year", "pop", "age"))
-  norway[, level := "national"]
+  norway[, level := "nation"]
   norway[, municip_code := "norge"]
   norway[, imputed := FALSE]
   missingYearsNational <- (max(norway$year) + 1):(lubridate::year(lubridate::today()) + 2)

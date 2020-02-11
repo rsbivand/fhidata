@@ -1,3 +1,8 @@
+# fhidata 2020.2.10
+
+- Fixed duplicated population at national level
+- level = nation, county, municip
+
 # fhidata 2020.1.28
 
 - Included maps with inserts for Oslo
