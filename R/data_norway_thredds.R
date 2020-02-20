@@ -32,7 +32,7 @@ gen_senorge <- function(norway_locations_current, norway_map_municips) {
   long <- NULL
   lat <- NULL
 
-  require_namespace(c("ncdf4", "SDMTools"))
+  require_namespace(c("ncdf4"))
 
   date <- stringr::str_remove_all(lubridate::today() - 5, "-")
 
