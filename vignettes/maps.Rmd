@@ -1,7 +1,7 @@
 ---
 title: "Maps"
 author: "Richard White"
-date: "`r Sys.Date()`"
+date: "2020-02-20"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{datasets}
