@@ -64,8 +64,14 @@ gen_senorge <- function(norway_locations_current, norway_map_municips) {
 
   for (i in norway_locations_current$municip_code) {
     message(i)
-    res <- SDMTools::pnt.in.poly(gps[, c("long", "lat")], norway_map_municips[location_code == i, c("long", "lat")])
-    indexes <- which(res$pip > 0)
+    #res <- SDMTools::pnt.in.poly(gps[, c("long", "lat")], norway_map_municips[location_code == i, c("long", "lat")])
+    res <- sp::point.in.polygon(
+      point.x = gps$long,
+      point.y = gps$lat,
+      pol.x = norway_map_municips[location_code == i]$long,
+      pol.y = norway_map_municips[location_code == i]$lat,
+      )
+    indexes <- which(res > 0)
     gps[indexes, location_code := i]
   }
 

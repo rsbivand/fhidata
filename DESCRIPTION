@@ -28,7 +28,6 @@ Suggests: testthat,
     sp,
     forcats,
     ncdf4,
-    SDMTools,
     reshape2,
     sf,
     methods
