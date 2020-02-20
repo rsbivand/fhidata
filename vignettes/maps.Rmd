@@ -49,6 +49,20 @@ q <- q + labs(title = "Norwegian counties with 2019 borders and no insert")
 q
 ```
 
+```{r fig.height=7, fig.width=7}
+library(ggplot2)
+library(data.table)
+
+pd <- fhidata::norway_map_counties_b2017
+
+q <- ggplot()
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=location_code), color="black")
+q <- q + theme_void()
+q <- q + coord_quickmap()
+q <- q + labs(title = "Norwegian counties with 2017 borders and no insert")
+q
+```
+
 ## County Maps With Inserts
 
 ```{r fig.height=7, fig.width=7}
@@ -88,6 +102,26 @@ q <- q + annotate(
 q <- q + theme_void()
 q <- q + coord_quickmap()
 q <- q + labs(title = "Norwegian counties with 2019 borders and an insert for Oslo")
+q
+```
+
+```{r fig.height=7, fig.width=7}
+library(ggplot2)
+library(data.table)
+
+pd <- fhidata::norway_map_counties_with_insert_b2017
+
+q <- ggplot()
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=location_code), color="black")
+q <- q + annotate(
+  "text", 
+  x = fhidata::norway_map_insert_title_position_b2017$long, 
+  y = fhidata::norway_map_insert_title_position_b2017$lat,
+  label = "Oslo"
+  )
+q <- q + theme_void()
+q <- q + coord_quickmap()
+q <- q + labs(title = "Norwegian counties with 2017 borders and an insert for Oslo")
 q
 ```
 

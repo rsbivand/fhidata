@@ -27,8 +27,9 @@ Save the file and restart R. This will allow you to install `fhiverse` packages 
 
 Current `fhiverse` packages are:
 
+- [org](https://folkehelseinstituttet.github.io/org)
+- [plnr](https://folkehelseinstituttet.github.io/plnr)
 - [spread](https://folkehelseinstituttet.github.io/spread)
-- [fhidata](https://folkehelseinstituttet.github.io/fhi)
-- [fhiplot](https://folkehelseinstituttet.github.io/fhi)
-- [plnr](https://folkehelseinstituttet.github.io/fhi)
+- [fhidata](https://folkehelseinstituttet.github.io/fhidata)
+- [fhiplot](https://folkehelseinstituttet.github.io/fhiplot)
 - [fhi](https://folkehelseinstituttet.github.io/fhi)

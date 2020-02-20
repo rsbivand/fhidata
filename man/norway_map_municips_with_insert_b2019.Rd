@@ -8,10 +8,7 @@
 \item{long}{Location code.}
 \item{lat}{Location name.}
 \item{order}{The order that this line should be plotted in.}
-\item{hole}{Geodata. Not used.}
-\item{piece}{Geodata. Not used.}
 \item{group}{Needs to be used as 'group' aesthetic in ggplot2.}
-\item{id}{Non-informative id code.}
 \item{location_code}{Location code (municipality code).}
 }}
 \source{

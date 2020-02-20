@@ -11,10 +11,7 @@
 #' \item{long}{Location code.}
 #' \item{lat}{Location name.}
 #' \item{order}{The order that this line should be plotted in.}
-#' \item{hole}{Geodata. Not used.}
-#' \item{piece}{Geodata. Not used.}
 #' \item{group}{Needs to be used as 'group' aesthetic in ggplot2.}
-#' \item{id}{Non-informative id code.}
 #' \item{location_code}{Location code (county code).}
 #' }
 #' @source \url{https://kartkatalog.geonorge.no/metadata/norske-fylker-og-kommuner-illustrasjonsdata-2020-(klippet-etter-kyst)/7408853f-eb7d-48dd-bb6c-80c7e80f7392}
@@ -38,10 +35,7 @@
 #' \item{long}{Location code.}
 #' \item{lat}{Location name.}
 #' \item{order}{The order that this line should be plotted in.}
-#' \item{hole}{Geodata. Not used.}
-#' \item{piece}{Geodata. Not used.}
 #' \item{group}{Needs to be used as 'group' aesthetic in ggplot2.}
-#' \item{id}{Non-informative id code.}
 #' \item{location_code}{Location code (municipality code).}
 #' }
 #' @source \url{https://kartkatalog.geonorge.no/metadata/norske-fylker-og-kommuner-illustrasjonsdata-2020-(klippet-etter-kyst)/7408853f-eb7d-48dd-bb6c-80c7e80f7392}
@@ -67,10 +61,7 @@
 #' \item{long}{Location code.}
 #' \item{lat}{Location name.}
 #' \item{order}{The order that this line should be plotted in.}
-#' \item{hole}{Geodata. Not used.}
-#' \item{piece}{Geodata. Not used.}
 #' \item{group}{Needs to be used as 'group' aesthetic in ggplot2.}
-#' \item{id}{Non-informative id code.}
 #' \item{location_code}{Location code (county code).}
 #' }
 #' @source \url{https://kartkatalog.geonorge.no/metadata/norske-fylker-og-kommuner-illustrasjonsdata-2020-(klippet-etter-kyst)/7408853f-eb7d-48dd-bb6c-80c7e80f7392}
@@ -94,10 +85,7 @@
 #' \item{long}{Location code.}
 #' \item{lat}{Location name.}
 #' \item{order}{The order that this line should be plotted in.}
-#' \item{hole}{Geodata. Not used.}
-#' \item{piece}{Geodata. Not used.}
 #' \item{group}{Needs to be used as 'group' aesthetic in ggplot2.}
-#' \item{id}{Non-informative id code.}
 #' \item{location_code}{Location code (municipality code).}
 #' }
 #' @source \url{https://kartkatalog.geonorge.no/metadata/norske-fylker-og-kommuner-illustrasjonsdata-2020-(klippet-etter-kyst)/7408853f-eb7d-48dd-bb6c-80c7e80f7392}
@@ -123,10 +111,7 @@
 #' \item{long}{Location code.}
 #' \item{lat}{Location name.}
 #' \item{order}{The order that this line should be plotted in.}
-#' \item{hole}{Geodata. Not used.}
-#' \item{piece}{Geodata. Not used.}
 #' \item{group}{Needs to be used as 'group' aesthetic in ggplot2.}
-#' \item{id}{Non-informative id code.}
 #' \item{location_code}{Location code (county code).}
 #' }
 #' @source \url{https://kartkatalog.geonorge.no/metadata/uuid/cb02ab77-d3e6-4500-8a92-ea67367e7734}
@@ -150,10 +135,7 @@
 #' \item{long}{Location code.}
 #' \item{lat}{Location name.}
 #' \item{order}{The order that this line should be plotted in.}
-#' \item{hole}{Geodata. Not used.}
-#' \item{piece}{Geodata. Not used.}
 #' \item{group}{Needs to be used as 'group' aesthetic in ggplot2.}
-#' \item{id}{Non-informative id code.}
 #' \item{location_code}{Location code (municipality code).}
 #' }
 #' @source \url{https://kartkatalog.geonorge.no/metadata/uuid/cb02ab77-d3e6-4500-8a92-ea67367e7734}
@@ -179,10 +161,7 @@
 #' \item{long}{Location code.}
 #' \item{lat}{Location name.}
 #' \item{order}{The order that this line should be plotted in.}
-#' \item{hole}{Geodata. Not used.}
-#' \item{piece}{Geodata. Not used.}
 #' \item{group}{Needs to be used as 'group' aesthetic in ggplot2.}
-#' \item{id}{Non-informative id code.}
 #' \item{location_code}{Location code (county code).}
 #' }
 #' @source \url{https://kartkatalog.geonorge.no/metadata/uuid/cb02ab77-d3e6-4500-8a92-ea67367e7734}
@@ -206,10 +185,7 @@
 #' \item{long}{Location code.}
 #' \item{lat}{Location name.}
 #' \item{order}{The order that this line should be plotted in.}
-#' \item{hole}{Geodata. Not used.}
-#' \item{piece}{Geodata. Not used.}
 #' \item{group}{Needs to be used as 'group' aesthetic in ggplot2.}
-#' \item{id}{Non-informative id code.}
 #' \item{location_code}{Location code (municipality code).}
 #' }
 #' @source \url{https://kartkatalog.geonorge.no/metadata/uuid/cb02ab77-d3e6-4500-8a92-ea67367e7734}
@@ -224,6 +200,58 @@
 #' q <- q + coord_quickmap()
 #' q
 "norway_map_municips_with_insert_b2019"
+
+###### 2017 WITHOUT INSERTS
+
+#' Maps of Norwegian Counties (2017 borders)
+#'
+#' We conveniently package map datasets for Norwegian counties
+#' (taken from Geonorge) that can be used in ggplot2 without needing any geo
+#' libraries. This data is licensed under Creative Commons 0.
+#'
+#' @format
+#' \describe{
+#' \item{long}{Location code.}
+#' \item{lat}{Location name.}
+#' \item{order}{The order that this line should be plotted in.}
+#' \item{group}{Needs to be used as 'group' aesthetic in ggplot2.}
+#' \item{location_code}{Location code (county code).}
+#' }
+#' @source \url{https://kartkatalog.geonorge.no/metadata/uuid/cb02ab77-d3e6-4500-8a92-ea67367e7734}
+#' @examples
+#' library(ggplot2)
+#' q <- ggplot(mapping = aes(x = long, y = lat, group = group, fill = location_code))
+#' q <- q + geom_polygon(data = fhidata::norway_map_counties_b2017, color = "black")
+#' q <- q + theme_void()
+#' q <- q + coord_quickmap()
+#' q
+"norway_map_counties_b2017"
+
+###### 2017 WITH INSERTS
+
+#' Maps of Norwegian counties with inserts (2017 borders)
+#'
+#' We conveniently package map datasets for Norwegian counties
+#' (taken from Geonorge) that can be used in ggplot2 without needing any geo
+#' libraries. This data is licensed under Creative Commons 0.
+#'
+#' @format
+#' \describe{
+#' \item{long}{Location code.}
+#' \item{lat}{Location name.}
+#' \item{order}{The order that this line should be plotted in.}
+#' \item{group}{Needs to be used as 'group' aesthetic in ggplot2.}
+#' \item{location_code}{Location code (county code).}
+#' }
+#' @source \url{https://kartkatalog.geonorge.no/metadata/uuid/cb02ab77-d3e6-4500-8a92-ea67367e7734}
+#' @examples
+#' library(ggplot2)
+#' q <- ggplot(mapping = aes(x = long, y = lat, group = group, fill = location_code))
+#' q <- q + geom_polygon(data = fhidata::norway_map_counties_with_insert_b2017, color = "black")
+#' q <- q + theme_void()
+#' q <- q + coord_quickmap()
+#' q
+"norway_map_counties_with_insert_b2017"
 
 #### LABEL POSITIONS
 
@@ -285,6 +313,35 @@
 #' q
 "norway_map_counties_label_positions_b2019"
 
+#' Label Positions for Norwegian Counties (2017 borders)
+#'
+#' GPS coordinates for labels for Norwegian counties
+#'
+#' @format
+#' \describe{
+#' \item{location_code}{Location code (county code).}
+#' \item{long}{Location code.}
+#' \item{lat}{Location name.}
+#' }
+#' @examples
+#' library(ggplot2)
+#' q <- ggplot(mapping = aes(x = long, y = lat))
+#' q <- q + geom_polygon(
+#'   data = fhidata::norway_map_counties_b2017,
+#'   mapping = aes(group = group),
+#'   color = "black",
+#'   fill = "white"
+#' )
+#' q <- q + geom_text(
+#'   data = fhidata::norway_map_counties_label_positions_b2017,
+#'   mapping = aes(label = location_code),
+#'   color = "red"
+#' )
+#' q <- q + theme_void()
+#' q <- q + coord_quickmap()
+#' q
+"norway_map_counties_label_positions_b2017"
+
 #### TITLE POSITIONS
 
 #' Title Positions for Inserts (2020 borders)
@@ -345,10 +402,64 @@
 #' q
 "norway_map_insert_title_position_b2019"
 
-gen_norway_map_counties_label_positions <- function(x_year_end) {
-  stopifnot(x_year_end %in% c("2019", "2020"))
+#' Title Positions for Inserts (2017 borders)
+#'
+#' GPS coordinates for inserts for Norwegian maps
+#'
+#' @format
+#' \describe{
+#' \item{long}{Location code.}
+#' \item{lat}{Location name.}
+#' }
+#' @examples
+#' library(ggplot2)
+#' pd <- fhidata::norway_map_counties_with_insert_b2017
+#' q <- ggplot()
+#' q <- q + geom_polygon(
+#'   data = pd,
+#'   aes(x = long, y = lat, group = group, fill = location_code),
+#'   color = "black"
+#' )
+#' q <- q + annotate(
+#'   "text",
+#'   x = fhidata::norway_map_counties_with_insert_b2017$long,
+#'   y = fhidata::norway_map_counties_with_insert_b2017$lat,
+#'   label = "Oslo"
+#' )
+#' q <- q + theme_void()
+#' q <- q + coord_quickmap()
+#' q
+"norway_map_insert_title_position_b2017"
 
-  if (x_year_end == 2019) {
+gen_norway_map_counties_label_positions <- function(x_year_end) {
+  stopifnot(x_year_end %in% c("2017", "2019", "2020"))
+
+  if (x_year_end == 2017) {
+    label_positions <- data.table(
+      location_code = c(
+        "county01", "county02", "county03", "county04",
+        "county05", "county06", "county07", "county08",
+        "county09", "county10", "county11", "county12",
+        "county14", "county15", "county16", "county17",
+        "county18", "county19", "county20"
+      ),
+      long = c(
+        11.266137, 11.2, 10.72028, 11.5,
+        9.248258, 9.3, 10.0, 8.496352,
+        8.45, 7.2, 6.1, 6.5,
+        6.415354, 7.8, 9.650999, 11.546003,
+        14.8, 19.244275, 24.7
+      ),
+
+      lat = c(
+        59.33375, 60.03851, 59.98, 61.26886,
+        61.25501, 60.3, 59.32481, 59.47989,
+        58.6, 58.4, 58.7, 60.25533,
+        61.6, 62.5, 63.43384, 67.29402,
+        66.5, 68.9, 69.6
+      )
+    )
+  } else if (x_year_end == 2019) {
     label_positions <- data.table(
       location_code = c(
         "county01", "county02", "county03", "county04",
@@ -392,7 +503,7 @@ gen_norway_map_counties_label_positions <- function(x_year_end) {
 }
 
 gen_norway_map_insert_title_position <- function(x_year_end) {
-  stopifnot(x_year_end %in% c("2019", "2020"))
+  stopifnot(x_year_end %in% c("2017", "2019", "2020"))
 
   label_positions <- data.table(
     long = c(
@@ -408,7 +519,7 @@ gen_norway_map_insert_title_position <- function(x_year_end) {
 
 # insert for oslo/akershus?
 gen_norway_map_counties <- function(x_year_end, insert = FALSE) {
-  stopifnot(x_year_end %in% c("2019", "2020"))
+  stopifnot(x_year_end %in% c("2017", "2019", "2020"))
 
   . <- NULL
   id <- NULL
@@ -418,21 +529,22 @@ gen_norway_map_counties <- function(x_year_end, insert = FALSE) {
   long_center <- NULL
   lat_center <- NULL
   group <- NULL
+  hole <- NULL
+  piece <- NULL
 
   require_namespace(c("geojsonio", "broom", "rmapshaper", "sp"))
-  if (x_year_end == 2019) {
+  if (x_year_end == 2017) {
+    spdf <- geojsonio::geojson_read(
+      system.file("extdata", "Fylker17.geojson", package = "fhidata"),
+      what = "sp"
+    )
+  } else if (x_year_end == 2019) {
     spdf <- geojsonio::geojson_read(
       system.file("extdata", "Fylker19.geojson", package = "fhidata"),
       what = "sp"
     )
     spdf_simple <- rmapshaper::ms_simplify(spdf, keep = 0.1)
   } else if (x_year_end == 2020) {
-    # spdf <- sf::st_read(
-    #   system.file("extdata", "Fylker20.gml", package = "fhidata"),
-    #   layer = "Fylke"
-    # )
-    # spdf_simple <- rmapshaper::ms_simplify(spdf, keep = 0.2)
-    # spdf_simple <- methods::as(spdf_simple, "Spatial")
     spdf <- geojsonio::geojson_read(
       system.file("extdata", "Fylker20.geojson", package = "fhidata"),
       what = "sp"
@@ -441,9 +553,7 @@ gen_norway_map_counties <- function(x_year_end, insert = FALSE) {
   }
 
   spdf_fortified <- broom::tidy(spdf_simple, region = "fylkesnummer")
-
   setDT(spdf_fortified)
-  spdf_fortified[, location_code := sprintf("county%s", formatC(as.numeric(id), width = 2, flag = "0"))]
 
   # convert from UTM to latlong
   utm <- spdf_fortified[, c("long", "lat")]
@@ -453,6 +563,8 @@ gen_norway_map_counties <- function(x_year_end, insert = FALSE) {
 
   spdf_fortified[, long := spgeo$long]
   spdf_fortified[, lat := spgeo$lat]
+
+  spdf_fortified[, location_code := sprintf("county%s", formatC(as.numeric(id), width = 2, flag = "0"))]
 
   if (insert) {
     extra <- spdf_fortified[location_code %in% c("county03")]
@@ -466,6 +578,10 @@ gen_norway_map_counties <- function(x_year_end, insert = FALSE) {
 
     spdf_fortified <- rbind(spdf_fortified, extra)
   }
+
+  spdf_fortified[, hole := NULL]
+  spdf_fortified[, piece := NULL]
+  spdf_fortified[, id := NULL]
 
   return(invisible(spdf_fortified))
 }
@@ -481,6 +597,8 @@ gen_norway_map_municips <- function(x_year_end, insert = FALSE) {
   long_center <- NULL
   lat_center <- NULL
   group <- NULL
+  hole <- NULL
+  piece <- NULL
 
   require_namespace(c("geojsonio", "broom", "rmapshaper", "sp"))
 
@@ -530,6 +648,10 @@ gen_norway_map_municips <- function(x_year_end, insert = FALSE) {
 
     spdf_fortified <- rbind(spdf_fortified, extra)
   }
+
+  spdf_fortified[, hole := NULL]
+  spdf_fortified[, piece := NULL]
+  spdf_fortified[, id := NULL]
 
   return(invisible(spdf_fortified))
 }
