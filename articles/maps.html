@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fhidata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2020.2.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2020.2.20</span>
       </span>
     </div>
 
@@ -78,7 +78,7 @@
       <h1>Maps</h1>
                         <h4 class="author">Richard White</h4>
             
-            <h4 class="date">2020-02-11</h4>
+            <h4 class="date">2020-02-20</h4>
       
       
       <div class="hidden name"><code>maps.Rmd</code></div>
@@ -114,114 +114,144 @@
 <a class="sourceLine" id="cb2-10" data-line-number="10">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Norwegian counties with 2019 borders and no insert"</span>)</a>
 <a class="sourceLine" id="cb2-11" data-line-number="11">q</a></code></pre></div>
 <p><img src="maps_files/figure-html/unnamed-chunk-2-1.png" width="672"></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(data.table)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">pd &lt;-<span class="st"> </span>fhidata<span class="op">::</span>norway_map_counties_b2017</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">q &lt;-<span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>()</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span>(<span class="dt">data =</span> pd, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>( <span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group, <span class="dt">fill=</span>location_code), <span class="dt">color=</span><span class="st">"black"</span>)</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span>()</a>
+<a class="sourceLine" id="cb3-9" data-line-number="9">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_quickmap</a></span>()</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Norwegian counties with 2017 borders and no insert"</span>)</a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">q</a></code></pre></div>
+<p><img src="maps_files/figure-html/unnamed-chunk-3-1.png" width="672"></p>
 </div>
 <div id="county-maps-with-inserts" class="section level2">
 <h2 class="hasAnchor">
 <a href="#county-maps-with-inserts" class="anchor"></a>County Maps With Inserts</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(data.table)</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4">pd &lt;-<span class="st"> </span>fhidata<span class="op">::</span>norway_map_counties_with_insert_b2020</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6">q &lt;-<span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>()</a>
-<a class="sourceLine" id="cb3-7" data-line-number="7">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span>(<span class="dt">data =</span> pd, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>( <span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group, <span class="dt">fill=</span>location_code), <span class="dt">color=</span><span class="st">"black"</span>)</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span>(</a>
-<a class="sourceLine" id="cb3-9" data-line-number="9">  <span class="st">"text"</span>, </a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">  <span class="dt">x =</span> fhidata<span class="op">::</span>norway_map_insert_title_position_b2020<span class="op">$</span>long, </a>
-<a class="sourceLine" id="cb3-11" data-line-number="11">  <span class="dt">y =</span> fhidata<span class="op">::</span>norway_map_insert_title_position_b2020<span class="op">$</span>lat,</a>
-<a class="sourceLine" id="cb3-12" data-line-number="12">  <span class="dt">label =</span> <span class="st">"Oslo"</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13">  )</a>
-<a class="sourceLine" id="cb3-14" data-line-number="14">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span>()</a>
-<a class="sourceLine" id="cb3-15" data-line-number="15">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_quickmap</a></span>()</a>
-<a class="sourceLine" id="cb3-16" data-line-number="16">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Norwegian counties with 2020 borders and an insert for Oslo"</span>)</a>
-<a class="sourceLine" id="cb3-17" data-line-number="17">q</a></code></pre></div>
-<p><img src="maps_files/figure-html/unnamed-chunk-3-1.png" width="672"></p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(data.table)</a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">pd &lt;-<span class="st"> </span>fhidata<span class="op">::</span>norway_map_counties_with_insert_b2019</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">pd &lt;-<span class="st"> </span>fhidata<span class="op">::</span>norway_map_counties_with_insert_b2020</a>
 <a class="sourceLine" id="cb4-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb4-6" data-line-number="6">q &lt;-<span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>()</a>
 <a class="sourceLine" id="cb4-7" data-line-number="7">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span>(<span class="dt">data =</span> pd, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>( <span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group, <span class="dt">fill=</span>location_code), <span class="dt">color=</span><span class="st">"black"</span>)</a>
 <a class="sourceLine" id="cb4-8" data-line-number="8">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span>(</a>
 <a class="sourceLine" id="cb4-9" data-line-number="9">  <span class="st">"text"</span>, </a>
-<a class="sourceLine" id="cb4-10" data-line-number="10">  <span class="dt">x =</span> fhidata<span class="op">::</span>norway_map_insert_title_position_b2019<span class="op">$</span>long, </a>
-<a class="sourceLine" id="cb4-11" data-line-number="11">  <span class="dt">y =</span> fhidata<span class="op">::</span>norway_map_insert_title_position_b2019<span class="op">$</span>lat,</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">  <span class="dt">x =</span> fhidata<span class="op">::</span>norway_map_insert_title_position_b2020<span class="op">$</span>long, </a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">  <span class="dt">y =</span> fhidata<span class="op">::</span>norway_map_insert_title_position_b2020<span class="op">$</span>lat,</a>
 <a class="sourceLine" id="cb4-12" data-line-number="12">  <span class="dt">label =</span> <span class="st">"Oslo"</span></a>
 <a class="sourceLine" id="cb4-13" data-line-number="13">  )</a>
 <a class="sourceLine" id="cb4-14" data-line-number="14">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span>()</a>
 <a class="sourceLine" id="cb4-15" data-line-number="15">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_quickmap</a></span>()</a>
-<a class="sourceLine" id="cb4-16" data-line-number="16">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Norwegian counties with 2019 borders and an insert for Oslo"</span>)</a>
+<a class="sourceLine" id="cb4-16" data-line-number="16">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Norwegian counties with 2020 borders and an insert for Oslo"</span>)</a>
 <a class="sourceLine" id="cb4-17" data-line-number="17">q</a></code></pre></div>
 <p><img src="maps_files/figure-html/unnamed-chunk-4-1.png" width="672"></p>
-</div>
-<div id="municipality-maps-without-inserts" class="section level2">
-<h2 class="hasAnchor">
-<a href="#municipality-maps-without-inserts" class="anchor"></a>Municipality Maps Without Inserts</h2>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(data.table)</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">pd &lt;-<span class="st"> </span>fhidata<span class="op">::</span>norway_map_municips_b2020</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">pd &lt;-<span class="st"> </span>fhidata<span class="op">::</span>norway_map_counties_with_insert_b2019</a>
 <a class="sourceLine" id="cb5-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb5-6" data-line-number="6">q &lt;-<span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>()</a>
-<a class="sourceLine" id="cb5-7" data-line-number="7">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span>(<span class="dt">data =</span> pd, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>( <span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group), <span class="dt">color=</span><span class="st">"black"</span>, <span class="dt">fill=</span><span class="st">"white"</span>)</a>
-<a class="sourceLine" id="cb5-8" data-line-number="8">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span>()</a>
-<a class="sourceLine" id="cb5-9" data-line-number="9">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_quickmap</a></span>()</a>
-<a class="sourceLine" id="cb5-10" data-line-number="10">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Norwegian municipalities with 2020 borders and no insert for Oslo"</span>)</a>
-<a class="sourceLine" id="cb5-11" data-line-number="11">q</a></code></pre></div>
+<a class="sourceLine" id="cb5-7" data-line-number="7">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span>(<span class="dt">data =</span> pd, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>( <span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group, <span class="dt">fill=</span>location_code), <span class="dt">color=</span><span class="st">"black"</span>)</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span>(</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">  <span class="st">"text"</span>, </a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">  <span class="dt">x =</span> fhidata<span class="op">::</span>norway_map_insert_title_position_b2019<span class="op">$</span>long, </a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">  <span class="dt">y =</span> fhidata<span class="op">::</span>norway_map_insert_title_position_b2019<span class="op">$</span>lat,</a>
+<a class="sourceLine" id="cb5-12" data-line-number="12">  <span class="dt">label =</span> <span class="st">"Oslo"</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13">  )</a>
+<a class="sourceLine" id="cb5-14" data-line-number="14">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span>()</a>
+<a class="sourceLine" id="cb5-15" data-line-number="15">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_quickmap</a></span>()</a>
+<a class="sourceLine" id="cb5-16" data-line-number="16">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Norwegian counties with 2019 borders and an insert for Oslo"</span>)</a>
+<a class="sourceLine" id="cb5-17" data-line-number="17">q</a></code></pre></div>
 <p><img src="maps_files/figure-html/unnamed-chunk-5-1.png" width="672"></p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(data.table)</a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">pd &lt;-<span class="st"> </span>fhidata<span class="op">::</span>norway_map_municips_b2019</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">pd &lt;-<span class="st"> </span>fhidata<span class="op">::</span>norway_map_counties_with_insert_b2017</a>
 <a class="sourceLine" id="cb6-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb6-6" data-line-number="6">q &lt;-<span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>()</a>
-<a class="sourceLine" id="cb6-7" data-line-number="7">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span>(<span class="dt">data =</span> pd, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>( <span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group), <span class="dt">color=</span><span class="st">"black"</span>, <span class="dt">fill=</span><span class="st">"white"</span>)</a>
-<a class="sourceLine" id="cb6-8" data-line-number="8">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span>()</a>
-<a class="sourceLine" id="cb6-9" data-line-number="9">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_quickmap</a></span>()</a>
-<a class="sourceLine" id="cb6-10" data-line-number="10">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Norwegian municipalities with 2019 borders and no insert for Oslo"</span>)</a>
-<a class="sourceLine" id="cb6-11" data-line-number="11">q</a></code></pre></div>
+<a class="sourceLine" id="cb6-7" data-line-number="7">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span>(<span class="dt">data =</span> pd, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>( <span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group, <span class="dt">fill=</span>location_code), <span class="dt">color=</span><span class="st">"black"</span>)</a>
+<a class="sourceLine" id="cb6-8" data-line-number="8">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span>(</a>
+<a class="sourceLine" id="cb6-9" data-line-number="9">  <span class="st">"text"</span>, </a>
+<a class="sourceLine" id="cb6-10" data-line-number="10">  <span class="dt">x =</span> fhidata<span class="op">::</span>norway_map_insert_title_position_b2017<span class="op">$</span>long, </a>
+<a class="sourceLine" id="cb6-11" data-line-number="11">  <span class="dt">y =</span> fhidata<span class="op">::</span>norway_map_insert_title_position_b2017<span class="op">$</span>lat,</a>
+<a class="sourceLine" id="cb6-12" data-line-number="12">  <span class="dt">label =</span> <span class="st">"Oslo"</span></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13">  )</a>
+<a class="sourceLine" id="cb6-14" data-line-number="14">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span>()</a>
+<a class="sourceLine" id="cb6-15" data-line-number="15">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_quickmap</a></span>()</a>
+<a class="sourceLine" id="cb6-16" data-line-number="16">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Norwegian counties with 2017 borders and an insert for Oslo"</span>)</a>
+<a class="sourceLine" id="cb6-17" data-line-number="17">q</a></code></pre></div>
 <p><img src="maps_files/figure-html/unnamed-chunk-6-1.png" width="672"></p>
 </div>
-<div id="municipality-maps-with-inserts" class="section level2">
+<div id="municipality-maps-without-inserts" class="section level2">
 <h2 class="hasAnchor">
-<a href="#municipality-maps-with-inserts" class="anchor"></a>Municipality Maps With Inserts</h2>
+<a href="#municipality-maps-without-inserts" class="anchor"></a>Municipality Maps Without Inserts</h2>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(data.table)</a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4">pd &lt;-<span class="st"> </span>fhidata<span class="op">::</span>norway_map_municips_with_insert_b2020</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">pd &lt;-<span class="st"> </span>fhidata<span class="op">::</span>norway_map_municips_b2020</a>
 <a class="sourceLine" id="cb7-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb7-6" data-line-number="6">q &lt;-<span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>()</a>
 <a class="sourceLine" id="cb7-7" data-line-number="7">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span>(<span class="dt">data =</span> pd, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>( <span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group), <span class="dt">color=</span><span class="st">"black"</span>, <span class="dt">fill=</span><span class="st">"white"</span>)</a>
-<a class="sourceLine" id="cb7-8" data-line-number="8">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span>(</a>
-<a class="sourceLine" id="cb7-9" data-line-number="9">  <span class="st">"text"</span>, </a>
-<a class="sourceLine" id="cb7-10" data-line-number="10">  <span class="dt">x =</span> fhidata<span class="op">::</span>norway_map_insert_title_position_b2020<span class="op">$</span>long, </a>
-<a class="sourceLine" id="cb7-11" data-line-number="11">  <span class="dt">y =</span> fhidata<span class="op">::</span>norway_map_insert_title_position_b2020<span class="op">$</span>lat,</a>
-<a class="sourceLine" id="cb7-12" data-line-number="12">  <span class="dt">label =</span> <span class="st">"Oslo"</span></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13">)</a>
-<a class="sourceLine" id="cb7-14" data-line-number="14">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span>()</a>
-<a class="sourceLine" id="cb7-15" data-line-number="15">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_quickmap</a></span>()</a>
-<a class="sourceLine" id="cb7-16" data-line-number="16">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Norwegian municipalities with 2020 borders and an insert for Oslo"</span>)</a>
-<a class="sourceLine" id="cb7-17" data-line-number="17">q</a></code></pre></div>
+<a class="sourceLine" id="cb7-8" data-line-number="8">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span>()</a>
+<a class="sourceLine" id="cb7-9" data-line-number="9">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_quickmap</a></span>()</a>
+<a class="sourceLine" id="cb7-10" data-line-number="10">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Norwegian municipalities with 2020 borders and no insert for Oslo"</span>)</a>
+<a class="sourceLine" id="cb7-11" data-line-number="11">q</a></code></pre></div>
 <p><img src="maps_files/figure-html/unnamed-chunk-7-1.png" width="672"></p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(data.table)</a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4">pd &lt;-<span class="st"> </span>fhidata<span class="op">::</span>norway_map_municips_with_insert_b2019</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">pd &lt;-<span class="st"> </span>fhidata<span class="op">::</span>norway_map_municips_b2019</a>
 <a class="sourceLine" id="cb8-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb8-6" data-line-number="6">q &lt;-<span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>()</a>
 <a class="sourceLine" id="cb8-7" data-line-number="7">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span>(<span class="dt">data =</span> pd, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>( <span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group), <span class="dt">color=</span><span class="st">"black"</span>, <span class="dt">fill=</span><span class="st">"white"</span>)</a>
-<a class="sourceLine" id="cb8-8" data-line-number="8">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span>(</a>
-<a class="sourceLine" id="cb8-9" data-line-number="9">  <span class="st">"text"</span>, </a>
-<a class="sourceLine" id="cb8-10" data-line-number="10">  <span class="dt">x =</span> fhidata<span class="op">::</span>norway_map_insert_title_position_b2019<span class="op">$</span>long, </a>
-<a class="sourceLine" id="cb8-11" data-line-number="11">  <span class="dt">y =</span> fhidata<span class="op">::</span>norway_map_insert_title_position_b2019<span class="op">$</span>lat,</a>
-<a class="sourceLine" id="cb8-12" data-line-number="12">  <span class="dt">label =</span> <span class="st">"Oslo"</span></a>
-<a class="sourceLine" id="cb8-13" data-line-number="13">)</a>
-<a class="sourceLine" id="cb8-14" data-line-number="14">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span>()</a>
-<a class="sourceLine" id="cb8-15" data-line-number="15">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_quickmap</a></span>()</a>
-<a class="sourceLine" id="cb8-16" data-line-number="16">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Norwegian municipalities with 2019 borders and an insert for Oslo"</span>)</a>
-<a class="sourceLine" id="cb8-17" data-line-number="17">q</a></code></pre></div>
+<a class="sourceLine" id="cb8-8" data-line-number="8">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span>()</a>
+<a class="sourceLine" id="cb8-9" data-line-number="9">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_quickmap</a></span>()</a>
+<a class="sourceLine" id="cb8-10" data-line-number="10">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Norwegian municipalities with 2019 borders and no insert for Oslo"</span>)</a>
+<a class="sourceLine" id="cb8-11" data-line-number="11">q</a></code></pre></div>
 <p><img src="maps_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
+</div>
+<div id="municipality-maps-with-inserts" class="section level2">
+<h2 class="hasAnchor">
+<a href="#municipality-maps-with-inserts" class="anchor"></a>Municipality Maps With Inserts</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(data.table)</a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4">pd &lt;-<span class="st"> </span>fhidata<span class="op">::</span>norway_map_municips_with_insert_b2020</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6">q &lt;-<span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>()</a>
+<a class="sourceLine" id="cb9-7" data-line-number="7">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span>(<span class="dt">data =</span> pd, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>( <span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group), <span class="dt">color=</span><span class="st">"black"</span>, <span class="dt">fill=</span><span class="st">"white"</span>)</a>
+<a class="sourceLine" id="cb9-8" data-line-number="8">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span>(</a>
+<a class="sourceLine" id="cb9-9" data-line-number="9">  <span class="st">"text"</span>, </a>
+<a class="sourceLine" id="cb9-10" data-line-number="10">  <span class="dt">x =</span> fhidata<span class="op">::</span>norway_map_insert_title_position_b2020<span class="op">$</span>long, </a>
+<a class="sourceLine" id="cb9-11" data-line-number="11">  <span class="dt">y =</span> fhidata<span class="op">::</span>norway_map_insert_title_position_b2020<span class="op">$</span>lat,</a>
+<a class="sourceLine" id="cb9-12" data-line-number="12">  <span class="dt">label =</span> <span class="st">"Oslo"</span></a>
+<a class="sourceLine" id="cb9-13" data-line-number="13">)</a>
+<a class="sourceLine" id="cb9-14" data-line-number="14">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span>()</a>
+<a class="sourceLine" id="cb9-15" data-line-number="15">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_quickmap</a></span>()</a>
+<a class="sourceLine" id="cb9-16" data-line-number="16">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Norwegian municipalities with 2020 borders and an insert for Oslo"</span>)</a>
+<a class="sourceLine" id="cb9-17" data-line-number="17">q</a></code></pre></div>
+<p><img src="maps_files/figure-html/unnamed-chunk-9-1.png" width="672"></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(data.table)</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">pd &lt;-<span class="st"> </span>fhidata<span class="op">::</span>norway_map_municips_with_insert_b2019</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">q &lt;-<span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>()</a>
+<a class="sourceLine" id="cb10-7" data-line-number="7">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span>(<span class="dt">data =</span> pd, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>( <span class="dt">x =</span> long, <span class="dt">y =</span> lat, <span class="dt">group =</span> group), <span class="dt">color=</span><span class="st">"black"</span>, <span class="dt">fill=</span><span class="st">"white"</span>)</a>
+<a class="sourceLine" id="cb10-8" data-line-number="8">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span>(</a>
+<a class="sourceLine" id="cb10-9" data-line-number="9">  <span class="st">"text"</span>, </a>
+<a class="sourceLine" id="cb10-10" data-line-number="10">  <span class="dt">x =</span> fhidata<span class="op">::</span>norway_map_insert_title_position_b2019<span class="op">$</span>long, </a>
+<a class="sourceLine" id="cb10-11" data-line-number="11">  <span class="dt">y =</span> fhidata<span class="op">::</span>norway_map_insert_title_position_b2019<span class="op">$</span>lat,</a>
+<a class="sourceLine" id="cb10-12" data-line-number="12">  <span class="dt">label =</span> <span class="st">"Oslo"</span></a>
+<a class="sourceLine" id="cb10-13" data-line-number="13">)</a>
+<a class="sourceLine" id="cb10-14" data-line-number="14">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_void</a></span>()</a>
+<a class="sourceLine" id="cb10-15" data-line-number="15">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/coord_map.html">coord_quickmap</a></span>()</a>
+<a class="sourceLine" id="cb10-16" data-line-number="16">q &lt;-<span class="st"> </span>q <span class="op">+</span><span class="st"> </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">title =</span> <span class="st">"Norwegian municipalities with 2019 borders and an insert for Oslo"</span>)</a>
+<a class="sourceLine" id="cb10-17" data-line-number="17">q</a></code></pre></div>
+<p><img src="maps_files/figure-html/unnamed-chunk-10-1.png" width="672"></p>
 </div>
   </div>
 
