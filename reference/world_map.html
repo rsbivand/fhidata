@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Population in Norway (2019 borders). — norway_population_b2019 • fhidata</title>
+<title>World Map — world_map • fhidata</title>
 
 
 <!-- jquery -->
@@ -35,10 +35,10 @@
 
 
 
-<meta property="og:title" content="Population in Norway (2019 borders). — norway_population_b2019" />
-<meta property="og:description" content="We conveniently package population data taken from Statistics Norway.
-This data is licensed under the Norwegian Licence for
-Open Government Data (NLOD) 2.0." />
+<meta property="og:title" content="World Map — world_map" />
+<meta property="og:description" content="We conveniently package map datasets for the world
+(taken from Natural Earth) that can be used in ggplot2 without needing any geo
+libraries. This data is licensed under the public domain." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -117,40 +117,45 @@ Open Government Data (NLOD) 2.0." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Population in Norway (2019 borders).</h1>
+    <h1>World Map</h1>
     
-    <div class="hidden name"><code>norway_population_b2019.Rd</code></div>
+    <div class="hidden name"><code>world_map.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>We conveniently package population data taken from Statistics Norway.
-This data is licensed under the Norwegian Licence for
-Open Government Data (NLOD) 2.0.</p>
+    <p>We conveniently package map datasets for the world
+(taken from Natural Earth) that can be used in ggplot2 without needing any geo
+libraries. This data is licensed under the public domain.</p>
     </div>
 
-    <pre class="usage"><span class='no'>norway_population_b2019</span></pre>
+    <pre class="usage"><span class='no'>world_map</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     <dl class='dl-horizontal'>
-<dt>year</dt><dd><p>Year.</p></dd>
-<dt>location_code</dt><dd><p>The location code.</p></dd>
-<dt>level</dt><dd><p>National/County/Municipality.</p></dd>
-<dt>age</dt><dd><p>1 year ages from 0 to 105.</p></dd>
-<dt>pop</dt><dd><p>Number of people.</p></dd>
-<dt>imputed</dt><dd><p>FALSE if real data. TRUE if it is the last real data point carried forward.</p></dd>
+<dt>long</dt><dd><p>Location code.</p></dd>
+<dt>lat</dt><dd><p>Location name.</p></dd>
+<dt>order</dt><dd><p>The order that this line should be plotted in.</p></dd>
+<dt>group</dt><dd><p>Needs to be used as 'group' aesthetic in ggplot2.</p></dd>
+<dt>location_code</dt><dd><p>3 character isocode.</p></dd>
 
 </dl>
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p><a href='https://www.ssb.no/en/statbank/table/07459/tableViewLayout1/'>https://www.ssb.no/en/statbank/table/07459/tableViewLayout1/</a></p>
+    <p><a href='https://www.naturalearthdata.com/downloads/50m-cultural-vectors/'>https://www.naturalearthdata.com/downloads/50m-cultural-vectors/</a></p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This dataset contains national/county/municipality level population data
-for every age (0 to 105 years old) from 2006. The counties and
-municipalities are updated for the 2019 borders.</p>
+    <p>This world map contains 196 administrative regions, corresponding to: 193 UN member states,
+2 non-member permanent observer states (Holy See and the State of Palestine), and Kashmir (KAH).</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>long</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>lat</span>, <span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>group</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>location_code</span>))
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_polygon.html'>geom_polygon</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>fhidata</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fhidata/man/world_map.html'>world_map</a></span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"black"</span>)
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_void</a></span>()
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_map.html'>coord_quickmap</a></span>()
+<span class='no'>q</span></div><div class='img'><img src='world_map-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -158,6 +163,7 @@ municipalities are updated for the 2019 borders.</p>
       <li><a href="#format">Format</a></li>
       <li><a href="#source">Source</a></li>
       <li><a href="#details">Details</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>
