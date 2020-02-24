@@ -78,6 +78,9 @@ gen_data_all <- function(base_loc) {
   norway_map_insert_title_position_b2020 <- gen_norway_map_insert_title_position(x_year_end = 2020)
   save(norway_map_insert_title_position_b2020, file = file.path(base_loc, "norway_map_insert_title_position_b2020.rda"), compress = "xz")
 
+  # world_map <- gen_world_map()
+  # save(world_map, file=file.path("/git","fhidata","data","world_map.rda"), compress = "xz")
+
   # norway_map_counties_b2017 <- gen_norway_map_counties(x_year_end=2017)
   # save(norway_map_counties_b2017, file=file.path("/git","/fhidata","data","norway_map_counties_b2017.rda"), compress = "xz")
 

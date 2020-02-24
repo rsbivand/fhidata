@@ -1,3 +1,7 @@
+# fhidata 2020.2.24
+
+- Included world map
+
 # fhidata 2020.2.20
 
 - Included county map for 2017 borders

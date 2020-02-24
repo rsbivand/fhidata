@@ -18,6 +18,21 @@ knitr::opts_chunk$set(
 )
 ```
 
+## World map
+
+```{r fig.height=7, fig.width=7}
+library(ggplot2)
+library(data.table)
+
+pd <- fhidata::world_map
+
+q <- ggplot(mapping = aes(x = long, y = lat, group = group))
+q <- q + geom_polygon(data = pd, color = "black", fill="white", size=0.1)
+q <- q + theme_void()
+q <- q + coord_quickmap()
+q
+```
+
 
 ## County Maps Without Inserts
 
@@ -28,7 +43,7 @@ library(data.table)
 pd <- fhidata::norway_map_counties_b2020
 
 q <- ggplot()
-q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=location_code), color="black")
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=location_code), color="black", size=0.1)
 q <- q + theme_void()
 q <- q + coord_quickmap()
 q <- q + labs(title = "Norwegian counties with 2020 borders and no insert")
@@ -42,7 +57,7 @@ library(data.table)
 pd <- fhidata::norway_map_counties_b2019
 
 q <- ggplot()
-q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=location_code), color="black")
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=location_code), color="black", size=0.1)
 q <- q + theme_void()
 q <- q + coord_quickmap()
 q <- q + labs(title = "Norwegian counties with 2019 borders and no insert")
@@ -56,7 +71,7 @@ library(data.table)
 pd <- fhidata::norway_map_counties_b2017
 
 q <- ggplot()
-q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=location_code), color="black")
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=location_code), color="black", size=0.1)
 q <- q + theme_void()
 q <- q + coord_quickmap()
 q <- q + labs(title = "Norwegian counties with 2017 borders and no insert")
@@ -72,7 +87,7 @@ library(data.table)
 pd <- fhidata::norway_map_counties_with_insert_b2020
 
 q <- ggplot()
-q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=location_code), color="black")
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=location_code), color="black", size=0.1)
 q <- q + annotate(
   "text", 
   x = fhidata::norway_map_insert_title_position_b2020$long, 
@@ -92,7 +107,7 @@ library(data.table)
 pd <- fhidata::norway_map_counties_with_insert_b2019
 
 q <- ggplot()
-q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=location_code), color="black")
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=location_code), color="black", size=0.1)
 q <- q + annotate(
   "text", 
   x = fhidata::norway_map_insert_title_position_b2019$long, 
@@ -112,7 +127,7 @@ library(data.table)
 pd <- fhidata::norway_map_counties_with_insert_b2017
 
 q <- ggplot()
-q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=location_code), color="black")
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=location_code), color="black", size=0.1)
 q <- q + annotate(
   "text", 
   x = fhidata::norway_map_insert_title_position_b2017$long, 
@@ -134,7 +149,7 @@ library(data.table)
 pd <- fhidata::norway_map_municips_b2020
 
 q <- ggplot()
-q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group), color="black", fill="white")
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group), color="black", fill="white", size=0.1)
 q <- q + theme_void()
 q <- q + coord_quickmap()
 q <- q + labs(title = "Norwegian municipalities with 2020 borders and no insert for Oslo")
@@ -148,7 +163,7 @@ library(data.table)
 pd <- fhidata::norway_map_municips_b2019
 
 q <- ggplot()
-q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group), color="black", fill="white")
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group), color="black", fill="white", size=0.1)
 q <- q + theme_void()
 q <- q + coord_quickmap()
 q <- q + labs(title = "Norwegian municipalities with 2019 borders and no insert for Oslo")
@@ -164,7 +179,7 @@ library(data.table)
 pd <- fhidata::norway_map_municips_with_insert_b2020
 
 q <- ggplot()
-q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group), color="black", fill="white")
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group), color="black", fill="white", size=0.1)
 q <- q + annotate(
   "text", 
   x = fhidata::norway_map_insert_title_position_b2020$long, 
@@ -184,7 +199,7 @@ library(data.table)
 pd <- fhidata::norway_map_municips_with_insert_b2019
 
 q <- ggplot()
-q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group), color="black", fill="white")
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group), color="black", fill="white", size=0.1)
 q <- q + annotate(
   "text", 
   x = fhidata::norway_map_insert_title_position_b2019$long, 
