@@ -50,45 +50,45 @@ gen_world_map <- function() {
     ),
     as_tibble = F
   )
-  #nrow(spdf)
+  # nrow(spdf)
   nam <- as.data.table(spdf)
-  nam[ADM0_A3=="VAT"]
+  nam[ADM0_A3 == "VAT"]
 
-  nam[ADM0_A3=="ISR",SOV_A3:="ISR"]
-  nam[ADM0_A3=="PSX",SOV_A3:="PSE"]
+  nam[ADM0_A3 == "ISR", SOV_A3 := "ISR"]
+  nam[ADM0_A3 == "PSX", SOV_A3 := "PSE"]
 
-  nam[SOV_A3=="US1",SOV_A3:="USA"]
-  nam[SOV_A3=="GB1",SOV_A3:="GBR"]
-  nam[SOV_A3=="NZ1",SOV_A3:="NZL"]
-  nam[SOV_A3=="NL1",SOV_A3:="NLD"]
-  nam[SOV_A3=="FR1",SOV_A3:="FRA"]
-  nam[SOV_A3=="FI1",SOV_A3:="FIN"]
-  nam[SOV_A3=="DN1",SOV_A3:="DNK"]
-  nam[SOV_A3=="CH1",SOV_A3:="CHN"]
-  nam[SOV_A3=="AU1",SOV_A3:="AUS"]
+  nam[SOV_A3 == "US1", SOV_A3 := "USA"]
+  nam[SOV_A3 == "GB1", SOV_A3 := "GBR"]
+  nam[SOV_A3 == "NZ1", SOV_A3 := "NZL"]
+  nam[SOV_A3 == "NL1", SOV_A3 := "NLD"]
+  nam[SOV_A3 == "FR1", SOV_A3 := "FRA"]
+  nam[SOV_A3 == "FI1", SOV_A3 := "FIN"]
+  nam[SOV_A3 == "DN1", SOV_A3 := "DNK"]
+  nam[SOV_A3 == "CH1", SOV_A3 := "CHN"]
+  nam[SOV_A3 == "AU1", SOV_A3 := "AUS"]
 
   spdf_simple <- sf::as_Spatial(spdf)
-  #spdf_simple <- rmapshaper::ms_simplify(spdf_simple, keep = 0.1)
-  #spdf_simple
+  # spdf_simple <- rmapshaper::ms_simplify(spdf_simple, keep = 0.1)
+  # spdf_simple
 
-  spdf_fortified <- broom::tidy(spdf_simple[,c("ADM0_A3")], region = "ADM0_A3")
+  spdf_fortified <- broom::tidy(spdf_simple[, c("ADM0_A3")], region = "ADM0_A3")
   setDT(spdf_fortified)
-  spdf_fortified[nam,on="id==ADM0_A3",id:=SOV_A3]
-  spdf_fortified[id=="CYN",id:="CYP"]
-  spdf_fortified[id=="SDS",id:="SSD"]
-  spdf_fortified[id=="SOL",id:="SOM"]
-  spdf_fortified[id=="KOS",id:="SRB"]
-  spdf_fortified[id=="SAH",id:="MAR"]
+  spdf_fortified[nam, on = "id==ADM0_A3", id := SOV_A3]
+  spdf_fortified[id == "CYN", id := "CYP"]
+  spdf_fortified[id == "SDS", id := "SSD"]
+  spdf_fortified[id == "SOL", id := "SOM"]
+  spdf_fortified[id == "KOS", id := "SRB"]
+  spdf_fortified[id == "SAH", id := "MAR"]
 
   # remove antarctica
-  spdf_fortified <- spdf_fortified[id!="ATA"]
+  spdf_fortified <- spdf_fortified[id != "ATA"]
 
-  #length(unique(spdf_fortified$id))
-  #countrycode::countrycode(sort(unique(spdf_fortified$id)),origin='iso3c',destination='country.name')
+  # length(unique(spdf_fortified$id))
+  # countrycode::countrycode(sort(unique(spdf_fortified$id)),origin='iso3c',destination='country.name')
 
   spdf_fortified[, hole := NULL]
   spdf_fortified[, piece := NULL]
-  setnames(spdf_fortified,"id","location_code")
+  setnames(spdf_fortified, "id", "location_code")
 
   length(unique(spdf_fortified$location_code))
 
