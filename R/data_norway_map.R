@@ -18,7 +18,12 @@
 #' @examples
 #' library(ggplot2)
 #' q <- ggplot(mapping = aes(x = long, y = lat, group = group, fill = location_code))
-#' q <- q + geom_polygon(data = fhidata::norway_map_counties_b2020, color = "black")
+#' q <- q + geom_polygon(
+#'   data = fhidata::norway_map_counties_b2020,
+#'   color = "black",
+#'   fill = "white",
+#'   size = 0.2
+#' )
 #' q <- q + theme_void()
 #' q <- q + coord_quickmap()
 #' q
@@ -42,7 +47,12 @@
 #' @examples
 #' library(ggplot2)
 #' q <- ggplot(mapping = aes(x = long, y = lat, group = group))
-#' q <- q + geom_polygon(data = fhidata::norway_map_municips_b2020, color = "black")
+#' q <- q + geom_polygon(
+#'   data = fhidata::norway_map_municips_b2020,
+#'   color = "black",
+#'   fill = "white",
+#'   size = 0.2
+#' )
 #' q <- q + theme_void()
 #' q <- q + coord_quickmap()
 #' q
@@ -68,7 +78,12 @@
 #' @examples
 #' library(ggplot2)
 #' q <- ggplot(mapping = aes(x = long, y = lat, group = group, fill = location_code))
-#' q <- q + geom_polygon(data = fhidata::norway_map_counties_with_insert_b2020, color = "black")
+#' q <- q + geom_polygon(
+#'   data = fhidata::norway_map_counties_with_insert_b2020,
+#'   color = "black",
+#'   fill = "white",
+#'   size = 0.2
+#' )
 #' q <- q + theme_void()
 #' q <- q + coord_quickmap()
 #' q
@@ -92,7 +107,12 @@
 #' @examples
 #' library(ggplot2)
 #' q <- ggplot(mapping = aes(x = long, y = lat, group = group))
-#' q <- q + geom_polygon(data = fhidata::norway_map_municips_with_insert_b2020, color = "black")
+#' q <- q + geom_polygon(
+#'   data = fhidata::norway_map_municips_with_insert_b2020,
+#'   color = "black",
+#'   fill = "white",
+#'   size = 0.2
+#' )
 #' q <- q + theme_void()
 #' q <- q + coord_quickmap()
 #' q
@@ -118,7 +138,12 @@
 #' @examples
 #' library(ggplot2)
 #' q <- ggplot(mapping = aes(x = long, y = lat, group = group, fill = location_code))
-#' q <- q + geom_polygon(data = fhidata::norway_map_counties_b2019, color = "black")
+#' q <- q + geom_polygon(
+#'   data = fhidata::norway_map_counties_b2019,
+#'   color = "black",
+#'   fill = "white",
+#'   size = 0.2
+#' )
 #' q <- q + theme_void()
 #' q <- q + coord_quickmap()
 #' q
@@ -142,7 +167,12 @@
 #' @examples
 #' library(ggplot2)
 #' q <- ggplot(mapping = aes(x = long, y = lat, group = group))
-#' q <- q + geom_polygon(data = fhidata::norway_map_municips_b2019, color = "black")
+#' q <- q + geom_polygon(
+#'   data = fhidata::norway_map_municips_b2019,
+#'   color = "black",
+#'   fill = "white",
+#'   size = 0.2
+#' )
 #' q <- q + theme_void()
 #' q <- q + coord_quickmap()
 #' q
@@ -168,7 +198,12 @@
 #' @examples
 #' library(ggplot2)
 #' q <- ggplot(mapping = aes(x = long, y = lat, group = group, fill = location_code))
-#' q <- q + geom_polygon(data = fhidata::norway_map_counties_with_insert_b2019, color = "black")
+#' q <- q + geom_polygon(
+#'   data = fhidata::norway_map_counties_with_insert_b2019,
+#'   color = "black",
+#'   fill = "white",
+#'   size = 0.2
+#' )
 #' q <- q + theme_void()
 #' q <- q + coord_quickmap()
 #' q
@@ -194,7 +229,9 @@
 #' q <- ggplot(mapping = aes(x = long, y = lat, group = group))
 #' q <- q + geom_polygon(
 #'   data = fhidata::norway_map_municips_with_insert_b2019,
-#'   color = "black"
+#'   color = "black",
+#'   fill = "white",
+#'   size = 0.2
 #' )
 #' q <- q + theme_void()
 #' q <- q + coord_quickmap()
@@ -221,7 +258,7 @@
 #' @examples
 #' library(ggplot2)
 #' q <- ggplot(mapping = aes(x = long, y = lat, group = group, fill = location_code))
-#' q <- q + geom_polygon(data = fhidata::norway_map_counties_b2017, color = "black")
+#' q <- q + geom_polygon(data = fhidata::norway_map_counties_b2017, color = "black", fill = "white", size = 0.2)
 #' q <- q + theme_void()
 #' q <- q + coord_quickmap()
 #' q
@@ -247,7 +284,7 @@
 #' @examples
 #' library(ggplot2)
 #' q <- ggplot(mapping = aes(x = long, y = lat, group = group, fill = location_code))
-#' q <- q + geom_polygon(data = fhidata::norway_map_counties_with_insert_b2017, color = "black")
+#' q <- q + geom_polygon(data = fhidata::norway_map_counties_with_insert_b2017, color = "black", fill = "white", size = 0.2)
 #' q <- q + theme_void()
 #' q <- q + coord_quickmap()
 #' q
@@ -301,7 +338,8 @@
 #'   data = fhidata::norway_map_counties_b2019,
 #'   mapping = aes(group = group),
 #'   color = "black",
-#'   fill = "white"
+#'   fill = "white",
+#'   size = 0.2
 #' )
 #' q <- q + geom_text(
 #'   data = fhidata::norway_map_counties_label_positions_b2019,
@@ -330,7 +368,8 @@
 #'   data = fhidata::norway_map_counties_b2017,
 #'   mapping = aes(group = group),
 #'   color = "black",
-#'   fill = "white"
+#'   fill = "white",
+#'   size = 0.2
 #' )
 #' q <- q + geom_text(
 #'   data = fhidata::norway_map_counties_label_positions_b2017,
@@ -360,7 +399,9 @@
 #' q <- q + geom_polygon(
 #'   data = pd,
 #'   aes(x = long, y = lat, group = group, fill = location_code),
-#'   color = "black"
+#'   color = "black",
+#'   fill = "white",
+#'   size = 0.2
 #' )
 #' q <- q + annotate(
 #'   "text",
@@ -389,7 +430,9 @@
 #' q <- q + geom_polygon(
 #'   data = pd,
 #'   aes(x = long, y = lat, group = group, fill = location_code),
-#'   color = "black"
+#'   color = "black",
+#'   fill = "white",
+#'   size = 0.2
 #' )
 #' q <- q + annotate(
 #'   "text",
@@ -418,7 +461,9 @@
 #' q <- q + geom_polygon(
 #'   data = pd,
 #'   aes(x = long, y = lat, group = group, fill = location_code),
-#'   color = "black"
+#'   color = "black",
+#'   fill = "white",
+#'   size = 0.2
 #' )
 #' q <- q + annotate(
 #'   "text",

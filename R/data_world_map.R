@@ -1,28 +1,61 @@
 #' World Map
 #'
 #' We conveniently package map datasets for the world
-#' (taken from Natural Earth) that can be used in ggplot2 without needing any geo
-#' libraries. This data is licensed under the public domain.
+#' (taken from Eurostat/GISCO) that can be used in ggplot2 without needing any geo
+#' libraries. This data is licensed under specific conditions noted in the details section.
 #'
-#' This world map contains 196 administrative regions, corresponding to: 193 UN member states,
-#' 2 non-member permanent observer states (Holy See and the State of Palestine), and Kashmir (KAH).
+#' This world map contains 254 administrative regions (`iso3_eurostat`), as defined by Eurostat/GISCO.
+#' The Vatican is not included in these administrative regions.
+#' Antarctica was physically removed by the maintainers of this R package.
 #'
+#' A second variable (`iso3_un195`) maps these administrative regions to:
+#' \itemize{
+#'   \item 193 UN member states
+#'   \item 1 non-member permanent observer state (State of Palestine)
+#'   \item "DISPUTED" (Western Sahara, Paracel Islands, Askai Chin, Arunachal Pradesh,
+#' China/India, Hala'Ib Triangle, Ilemi Triangle, Jammu Kashmir, Kuril Islands,
+#' Navassa Island, Scarborough Reef, Senkaku Islands, Bassa Da India, Abyei,
+#' Bir Tawil)
+#' }
+#'
+#' The permission to use the data is granted on condition that:
+#' \itemize{
+#' \item The data will not be used for commercial purposes
+#' \item The source will be acknowledged. A copyright notice will have to be visible on any printed or electronic publication using this dataset
+#' }
 #'
 #' @format
 #' \describe{
-#' \item{long}{Location code.}
-#' \item{lat}{Location name.}
+#' \item{long}{Longitude.}
+#' \item{lat}{Latitude.}
 #' \item{order}{The order that this line should be plotted in.}
 #' \item{group}{Needs to be used as 'group' aesthetic in ggplot2.}
-#' \item{location_code}{3 character isocode.}
+#' \item{iso3_eurostat}{3 character isocode, describing 254 administrative regions defined by Eurostat/GISCO.}
+#' \item{iso3_un195}{3 character isocode, mapping the 254 administrative regions defined by Eurostat/GISCO into:
+#' \itemize{
+#'   \item 193 UN member states
+#'   \item 1 non-member permanent observer state (State of Palestine)
+#'   \item "DISPUTED" (Western Sahara, Paracel Islands, Askai Chin, Arunachal Pradesh,
+#' China/India, Hala'Ib Triangle, Ilemi Triangle, Jammu Kashmir, Kuril Islands,
+#' Navassa Island, Scarborough Reef, Senkaku Islands, Bassa Da India, Abyei,
+#' Bir Tawil)
 #' }
-#' @source \url{https://www.naturalearthdata.com/downloads/50m-cultural-vectors/}
+#' }
+#' }
+#' @source \url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/countries}
 #' @examples
 #' library(ggplot2)
-#' q <- ggplot(mapping = aes(x = long, y = lat, group = group, fill = location_code))
-#' q <- q + geom_polygon(data = fhidata::world_map, color = "black")
+#' q <- ggplot(mapping = aes(x = long, y = lat, group = group))
+#' q <- q + geom_polygon(data = fhidata::world_map, color = "black", fill="white", size=0.2)
 #' q <- q + theme_void()
-#' q <- q + coord_quickmap()
+#' q <- q + coord_map(
+#'   projection = "cylequalarea",
+#'   xlim = c(-180,180),
+#'   ylim = c(-70,90),
+#'   orientation = c(90,0,0),
+#'   parameters = list(lat0=90)
+#' )
+#' q <- q + labs(caption="\u00A9 EuroGeographics for the administrative boundaries")
 #' q
 "world_map"
 
@@ -39,58 +72,56 @@ gen_world_map <- function() {
   piece <- NULL
   ADM0_A3 <- NULL
   SOV_A3 <- NULL
+  geometry <- NULL
+  iso3_eurostat <- NULL
+  iso3_un195 <- NULL
+  location_name <- NULL
+  location_name_english <- NULL
 
-  require_namespace(c("geojsonio", "broom", "rmapshaper", "sp", "sf"))
+  iso3 <- readxl::read_excel(system.file(
+    "extdata",
+    "iso3.xlsx",
+    package = "fhidata"
+  ))
+  setDT(iso3)
+  iso3
+  length(unique(iso3$iso3_un195))
+  length(unique(iso3$iso3_eurostat))
+
   spdf <- sf::read_sf(
     system.file(
       "extdata",
-      "ne_50m_admin_0_countries",
-      "ne_50m_admin_0_countries.shp",
+      "CNTR_RG_01M_2016_4326",
+      "CNTR_RG_01M_2016_4326.shp",
       package = "fhidata"
     ),
-    as_tibble = F
+    as_tibble = T
   )
-  # nrow(spdf)
-  nam <- as.data.table(spdf)
-  nam[ADM0_A3 == "VAT"]
-
-  nam[ADM0_A3 == "ISR", SOV_A3 := "ISR"]
-  nam[ADM0_A3 == "PSX", SOV_A3 := "PSE"]
-
-  nam[SOV_A3 == "US1", SOV_A3 := "USA"]
-  nam[SOV_A3 == "GB1", SOV_A3 := "GBR"]
-  nam[SOV_A3 == "NZ1", SOV_A3 := "NZL"]
-  nam[SOV_A3 == "NL1", SOV_A3 := "NLD"]
-  nam[SOV_A3 == "FR1", SOV_A3 := "FRA"]
-  nam[SOV_A3 == "FI1", SOV_A3 := "FIN"]
-  nam[SOV_A3 == "DN1", SOV_A3 := "DNK"]
-  nam[SOV_A3 == "CH1", SOV_A3 := "CHN"]
-  nam[SOV_A3 == "AU1", SOV_A3 := "AUS"]
+  nrow(spdf)
+  nam <- data.table(spdf[,c("ISO3_CODE","CNTR_NAME","NAME_ENGL")])
+  nam[,geometry:=NULL]
 
   spdf_simple <- sf::as_Spatial(spdf)
-  # spdf_simple <- rmapshaper::ms_simplify(spdf_simple, keep = 0.1)
-  # spdf_simple
-
-  spdf_fortified <- broom::tidy(spdf_simple[, c("ADM0_A3")], region = "ADM0_A3")
+  spdf_simple <- rmapshaper::ms_simplify(spdf_simple, keep = 0.5)
+  spdf_fortified <- broom::tidy(spdf_simple, region = "ISO3_CODE")
   setDT(spdf_fortified)
-  spdf_fortified[nam, on = "id==ADM0_A3", id := SOV_A3]
-  spdf_fortified[id == "CYN", id := "CYP"]
-  spdf_fortified[id == "SDS", id := "SSD"]
-  spdf_fortified[id == "SOL", id := "SOM"]
-  spdf_fortified[id == "KOS", id := "SRB"]
-  spdf_fortified[id == "SAH", id := "MAR"]
-
-  # remove antarctica
-  spdf_fortified <- spdf_fortified[id != "ATA"]
-
-  # length(unique(spdf_fortified$id))
-  # countrycode::countrycode(sort(unique(spdf_fortified$id)),origin='iso3c',destination='country.name')
+  setnames(spdf_fortified,"id","iso3_eurostat")
+  spdf_fortified[iso3,on="iso3_eurostat",iso3_un195:=iso3_un195]
+  spdf_fortified[iso3,on="iso3_eurostat",location_name:=location_name_english]
+  spdf_fortified <- spdf_fortified[iso3_eurostat!="ATA"] # get rid of antarctica
 
   spdf_fortified[, hole := NULL]
   spdf_fortified[, piece := NULL]
-  setnames(spdf_fortified, "id", "location_code")
 
-  length(unique(spdf_fortified$location_code))
+  length(unique(spdf_fortified$iso3_un195))
+  length(unique(spdf_fortified$iso3_eurostat))
+
+  unique(spdf_fortified[iso3_un195=="DISPUTED","iso3_eurostat","location_name"])
 
   return(invisible(spdf_fortified))
 }
+
+
+
+
+

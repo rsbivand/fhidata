@@ -21,7 +21,9 @@ q <- ggplot()
 q <- q + geom_polygon(
   data = pd,
   aes(x = long, y = lat, group = group, fill = location_code),
-  color = "black"
+  color = "black",
+  fill = "white",
+  size = 0.2
 )
 q <- q + annotate(
   "text",

@@ -1,3 +1,7 @@
+# fhidata 2020.2.26
+
+- World map now comes from Eurostat
+
 # fhidata 2020.2.24
 
 - Included world map

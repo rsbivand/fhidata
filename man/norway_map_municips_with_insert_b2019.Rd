@@ -27,7 +27,9 @@ library(ggplot2)
 q <- ggplot(mapping = aes(x = long, y = lat, group = group))
 q <- q + geom_polygon(
   data = fhidata::norway_map_municips_with_insert_b2019,
-  color = "black"
+  color = "black",
+  fill = "white",
+  size = 0.2
 )
 q <- q + theme_void()
 q <- q + coord_quickmap()

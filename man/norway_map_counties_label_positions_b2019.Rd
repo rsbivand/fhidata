@@ -22,7 +22,8 @@ q <- q + geom_polygon(
   data = fhidata::norway_map_counties_b2019,
   mapping = aes(group = group),
   color = "black",
-  fill = "white"
+  fill = "white",
+  size = 0.2
 )
 q <- q + geom_text(
   data = fhidata::norway_map_counties_label_positions_b2019,

@@ -25,7 +25,12 @@ libraries. This data is licensed under Creative Commons BY 4.0 (CC BY 4.0).
 \examples{
 library(ggplot2)
 q <- ggplot(mapping = aes(x = long, y = lat, group = group, fill = location_code))
-q <- q + geom_polygon(data = fhidata::norway_map_counties_b2020, color = "black")
+q <- q + geom_polygon(
+  data = fhidata::norway_map_counties_b2020,
+  color = "black",
+  fill = "white",
+  size = 0.2
+)
 q <- q + theme_void()
 q <- q + coord_quickmap()
 q

@@ -5,33 +5,67 @@
 \alias{world_map}
 \title{World Map}
 \format{\describe{
-\item{long}{Location code.}
-\item{lat}{Location name.}
+\item{long}{Longitude.}
+\item{lat}{Latitude.}
 \item{order}{The order that this line should be plotted in.}
 \item{group}{Needs to be used as 'group' aesthetic in ggplot2.}
-\item{location_code}{3 character isocode.}
+\item{iso3_eurostat}{3 character isocode, describing 254 administrative regions defined by Eurostat/GISCO.}
+\item{iso3_un195}{3 character isocode, mapping the 254 administrative regions defined by Eurostat/GISCO into:
+\itemize{
+  \item 193 UN member states
+  \item 1 non-member permanent observer state (State of Palestine)
+  \item "DISPUTED" (Western Sahara, Paracel Islands, Askai Chin, Arunachal Pradesh,
+China/India, Hala'Ib Triangle, Ilemi Triangle, Jammu Kashmir, Kuril Islands,
+Navassa Island, Scarborough Reef, Senkaku Islands, Bassa Da India, Abyei,
+Bir Tawil)
+}
+}
 }}
 \source{
-\url{https://www.naturalearthdata.com/downloads/50m-cultural-vectors/}
+\url{https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/countries}
 }
 \usage{
 world_map
 }
 \description{
 We conveniently package map datasets for the world
-(taken from Natural Earth) that can be used in ggplot2 without needing any geo
-libraries. This data is licensed under the public domain.
+(taken from Eurostat/GISCO) that can be used in ggplot2 without needing any geo
+libraries. This data is licensed under specific conditions noted in the details section.
 }
 \details{
-This world map contains 196 administrative regions, corresponding to: 193 UN member states,
-2 non-member permanent observer states (Holy See and the State of Palestine), and Kashmir (KAH).
+This world map contains 254 administrative regions (`iso3_eurostat`), as defined by Eurostat/GISCO.
+The Vatican is not included in these administrative regions.
+Antarctica was physically removed by the maintainers of this R package.
+
+A second variable (`iso3_un195`) maps these administrative regions to:
+\itemize{
+  \item 193 UN member states
+  \item 1 non-member permanent observer state (State of Palestine)
+  \item "DISPUTED" (Western Sahara, Paracel Islands, Askai Chin, Arunachal Pradesh,
+China/India, Hala'Ib Triangle, Ilemi Triangle, Jammu Kashmir, Kuril Islands,
+Navassa Island, Scarborough Reef, Senkaku Islands, Bassa Da India, Abyei,
+Bir Tawil)
+}
+
+The permission to use the data is granted on condition that:
+\itemize{
+\item The data will not be used for commercial purposes
+\item The source will be acknowledged. A copyright notice will have to be visible on any printed or electronic publication using this dataset
+}
 }
 \examples{
 library(ggplot2)
-q <- ggplot(mapping = aes(x = long, y = lat, group = group, fill = location_code))
-q <- q + geom_polygon(data = fhidata::world_map, color = "black")
+q <- ggplot(mapping = aes(x = long, y = lat, group = group))
+q <- q + geom_polygon(data = fhidata::world_map, color = "black", fill="white", size=0.2)
 q <- q + theme_void()
-q <- q + coord_quickmap()
+q <- q + coord_map(
+  projection = "cylequalarea",
+  xlim = c(-180,180),
+  ylim = c(-70,90),
+  orientation = c(90,0,0),
+  parameters = list(lat0=90)
+)
+q <- q + labs(caption="\\u00A9 EuroGeographics for the administrative boundaries")
 q
 }
 \keyword{datasets}
