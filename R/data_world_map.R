@@ -46,16 +46,16 @@
 #' @examples
 #' library(ggplot2)
 #' q <- ggplot(mapping = aes(x = long, y = lat, group = group))
-#' q <- q + geom_polygon(data = fhidata::world_map, color = "black", fill="white", size=0.2)
+#' q <- q + geom_polygon(data = fhidata::world_map, color = "black", fill = "white", size = 0.2)
 #' q <- q + theme_void()
 #' q <- q + coord_map(
 #'   projection = "cylequalarea",
-#'   xlim = c(-180,180),
-#'   ylim = c(-70,90),
-#'   orientation = c(90,0,0),
-#'   parameters = list(lat0=90)
+#'   xlim = c(-180, 180),
+#'   ylim = c(-70, 90),
+#'   orientation = c(90, 0, 0),
+#'   parameters = list(lat0 = 90)
 #' )
-#' q <- q + labs(caption="\u00A9 EuroGeographics for the administrative boundaries")
+#' q <- q + labs(caption = "\u00A9 EuroGeographics for the administrative boundaries")
 #' q
 "world_map"
 
@@ -98,17 +98,17 @@ gen_world_map <- function() {
     as_tibble = T
   )
   nrow(spdf)
-  nam <- data.table(spdf[,c("ISO3_CODE","CNTR_NAME","NAME_ENGL")])
-  nam[,geometry:=NULL]
+  nam <- data.table(spdf[, c("ISO3_CODE", "CNTR_NAME", "NAME_ENGL")])
+  nam[, geometry := NULL]
 
   spdf_simple <- sf::as_Spatial(spdf)
   spdf_simple <- rmapshaper::ms_simplify(spdf_simple, keep = 0.5)
   spdf_fortified <- broom::tidy(spdf_simple, region = "ISO3_CODE")
   setDT(spdf_fortified)
-  setnames(spdf_fortified,"id","iso3_eurostat")
-  spdf_fortified[iso3,on="iso3_eurostat",iso3_un195:=iso3_un195]
-  spdf_fortified[iso3,on="iso3_eurostat",location_name:=location_name_english]
-  spdf_fortified <- spdf_fortified[iso3_eurostat!="ATA"] # get rid of antarctica
+  setnames(spdf_fortified, "id", "iso3_eurostat")
+  spdf_fortified[iso3, on = "iso3_eurostat", iso3_un195 := iso3_un195]
+  spdf_fortified[iso3, on = "iso3_eurostat", location_name := location_name_english]
+  spdf_fortified <- spdf_fortified[iso3_eurostat != "ATA"] # get rid of antarctica
 
   spdf_fortified[, hole := NULL]
   spdf_fortified[, piece := NULL]
@@ -116,12 +116,7 @@ gen_world_map <- function() {
   length(unique(spdf_fortified$iso3_un195))
   length(unique(spdf_fortified$iso3_eurostat))
 
-  unique(spdf_fortified[iso3_un195=="DISPUTED","iso3_eurostat","location_name"])
+  unique(spdf_fortified[iso3_un195 == "DISPUTED", "iso3_eurostat", "location_name"])
 
   return(invisible(spdf_fortified))
 }
-
-
-
-
-
