@@ -37,8 +37,8 @@
 
 <meta property="og:title" content="World Map — world_map" />
 <meta property="og:description" content="We conveniently package map datasets for the world
-(taken from Natural Earth) that can be used in ggplot2 without needing any geo
-libraries. This data is licensed under the public domain." />
+(taken from Eurostat/GISCO) that can be used in ggplot2 without needing any geo
+libraries. This data is licensed under specific conditions noted in the details section." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -71,7 +71,7 @@ libraries. This data is licensed under the public domain." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fhidata</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2020.2.24</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2020.2.26</span>
       </span>
     </div>
 
@@ -124,8 +124,8 @@ libraries. This data is licensed under the public domain." />
 
     <div class="ref-description">
     <p>We conveniently package map datasets for the world
-(taken from Natural Earth) that can be used in ggplot2 without needing any geo
-libraries. This data is licensed under the public domain.</p>
+(taken from Eurostat/GISCO) that can be used in ggplot2 without needing any geo
+libraries. This data is licensed under specific conditions noted in the details section.</p>
     </div>
 
     <pre class="usage"><span class='no'>world_map</span></pre>
@@ -134,27 +134,58 @@ libraries. This data is licensed under the public domain.</p>
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     <dl class='dl-horizontal'>
-<dt>long</dt><dd><p>Location code.</p></dd>
-<dt>lat</dt><dd><p>Location name.</p></dd>
+<dt>long</dt><dd><p>Longitude.</p></dd>
+<dt>lat</dt><dd><p>Latitude.</p></dd>
 <dt>order</dt><dd><p>The order that this line should be plotted in.</p></dd>
 <dt>group</dt><dd><p>Needs to be used as 'group' aesthetic in ggplot2.</p></dd>
-<dt>location_code</dt><dd><p>3 character isocode.</p></dd>
+<dt>iso3_eurostat</dt><dd><p>3 character isocode, describing 254 administrative regions defined by Eurostat/GISCO.</p></dd>
+<dt>iso3_un195</dt><dd><p>3 character isocode, mapping the 254 administrative regions defined by Eurostat/GISCO into:
+<ul>
+<li><p>193 UN member states</p></li>
+<li><p>1 non-member permanent observer state (State of Palestine)</p></li>
+<li><p>"DISPUTED" (Western Sahara, Paracel Islands, Askai Chin, Arunachal Pradesh,
+China/India, Hala'Ib Triangle, Ilemi Triangle, Jammu Kashmir, Kuril Islands,
+Navassa Island, Scarborough Reef, Senkaku Islands, Bassa Da India, Abyei,
+Bir Tawil)</p></li>
+</ul></p></dd>
 
 </dl>
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p><a href='https://www.naturalearthdata.com/downloads/50m-cultural-vectors/'>https://www.naturalearthdata.com/downloads/50m-cultural-vectors/</a></p>
+    <p><a href='https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/countries'>https://ec.europa.eu/eurostat/web/gisco/geodata/reference-data/administrative-units-statistical-units/countries</a></p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This world map contains 196 administrative regions, corresponding to: 193 UN member states,
-2 non-member permanent observer states (Holy See and the State of Palestine), and Kashmir (KAH).</p>
+    <p>This world map contains 254 administrative regions (`iso3_eurostat`), as defined by Eurostat/GISCO.
+The Vatican is not included in these administrative regions.
+Antarctica was physically removed by the maintainers of this R package.</p>
+<p>A second variable (`iso3_un195`) maps these administrative regions to:</p><ul>
+<li><p>193 UN member states</p></li>
+<li><p>1 non-member permanent observer state (State of Palestine)</p></li>
+<li><p>"DISPUTED" (Western Sahara, Paracel Islands, Askai Chin, Arunachal Pradesh,
+China/India, Hala'Ib Triangle, Ilemi Triangle, Jammu Kashmir, Kuril Islands,
+Navassa Island, Scarborough Reef, Senkaku Islands, Bassa Da India, Abyei,
+Bir Tawil)</p></li>
+</ul>
+
+<p>The permission to use the data is granted on condition that:</p><ul>
+<li><p>The data will not be used for commercial purposes</p></li>
+<li><p>The source will be acknowledged. A copyright notice will have to be visible on any printed or electronic publication using this dataset</p></li>
+</ul>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
-<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>long</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>lat</span>, <span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>group</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>location_code</span>))
-<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_polygon.html'>geom_polygon</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>fhidata</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fhidata/man/world_map.html'>world_map</a></span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"black"</span>)
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='kw'>mapping</span> <span class='kw'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>long</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>lat</span>, <span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>group</span>))
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_polygon.html'>geom_polygon</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='kw pkg'>fhidata</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fhidata/man/world_map.html'>world_map</a></span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"black"</span>, <span class='kw'>fill</span><span class='kw'>=</span><span class='st'>"white"</span>, <span class='kw'>size</span><span class='kw'>=</span><span class='fl'>0.2</span>)
 <span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_void</a></span>()
-<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_map.html'>coord_quickmap</a></span>()
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_map.html'>coord_map</a></span>(
+  <span class='kw'>projection</span> <span class='kw'>=</span> <span class='st'>"cylequalarea"</span>,
+  <span class='kw'>xlim</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>180</span>,<span class='fl'>180</span>),
+  <span class='kw'>ylim</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(-<span class='fl'>70</span>,<span class='fl'>90</span>),
+  <span class='kw'>orientation</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>90</span>,<span class='fl'>0</span>,<span class='fl'>0</span>),
+  <span class='kw'>parameters</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>lat0</span><span class='kw'>=</span><span class='fl'>90</span>)
+)
+<span class='no'>q</span> <span class='kw'>&lt;-</span> <span class='no'>q</span> + <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>caption</span><span class='kw'>=</span><span class='st'>"\u00A9 EuroGeographics for the administrative boundaries"</span>)
 <span class='no'>q</span></div><div class='img'><img src='world_map-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
