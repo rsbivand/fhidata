@@ -213,11 +213,11 @@ gen_norway_municip_merging <- function(
     skeleton[, region_name := NULL]
   }
 
-  extra_years <- max(skeleton$year)+c(1:10)
-  for(i in extra_years){
-    temp <- skeleton[year==max(year)]
-    temp[,year:=i]
-    skeleton <- rbind(skeleton,temp)
+  extra_years <- max(skeleton$year) + c(1:10)
+  for (i in extra_years) {
+    temp <- skeleton[year == max(year)]
+    temp[, year := i]
+    skeleton <- rbind(skeleton, temp)
   }
 
   return(invisible(skeleton))
@@ -338,11 +338,11 @@ gen_norway_county_merging <- function(x_year_end, x_year_start = 2000) {
     x <- rbind(temp, x)
   }
 
-  extra_years <- max(x$year)+c(1:10)
-  for(i in extra_years){
-    temp <- x[year==max(year)]
-    temp[,year:=i]
-    x <- rbind(x,temp)
+  extra_years <- max(x$year) + c(1:10)
+  for (i in extra_years) {
+    temp <- x[year == max(year)]
+    temp[, year := i]
+    x <- rbind(x, temp)
   }
 
   return(invisible(x))

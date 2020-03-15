@@ -83,14 +83,14 @@ gen_norway_population <- function(x_year_end, original = FALSE) {
     pop[[i]] <- melt.data.table(pop[[i]], id.vars = c("region", "age"))
   }
   pop <- rbindlist(pop)
-  pop[, region:= stringr::str_remove(region,"^K-")]
+  pop[, region := stringr::str_remove(region, "^K-")]
   pop[, municip_code := sprintf("municip%s", stringr::str_extract(region, "^[0-9][0-9][0-9][0-9]"))]
   pop[, year := as.numeric(stringr::str_extract(variable, "[0-9][0-9][0-9][0-9]$"))]
   pop[, agenum := as.numeric(stringr::str_extract(age, "^[0-9]*"))]
   pop[, age := NULL]
   setnames(pop, "agenum", "age")
 
-  pop <- pop[municip_code!="municipNA"]
+  pop <- pop[municip_code != "municipNA"]
   pop <- pop[, .(
     pop = sum(value)
   ), keyby = .(
