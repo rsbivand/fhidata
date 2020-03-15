@@ -56,16 +56,16 @@ The permission to use the data is granted on condition that:
 \examples{
 library(ggplot2)
 q <- ggplot(mapping = aes(x = long, y = lat, group = group))
-q <- q + geom_polygon(data = fhidata::world_map, color = "black", fill="white", size=0.2)
+q <- q + geom_polygon(data = fhidata::world_map, color = "black", fill = "white", size = 0.2)
 q <- q + theme_void()
 q <- q + coord_map(
   projection = "cylequalarea",
-  xlim = c(-180,180),
-  ylim = c(-70,90),
-  orientation = c(90,0,0),
-  parameters = list(lat0=90)
+  xlim = c(-180, 180),
+  ylim = c(-70, 90),
+  orientation = c(90, 0, 0),
+  parameters = list(lat0 = 90)
 )
-q <- q + labs(caption="\\u00A9 EuroGeographics for the administrative boundaries")
+q <- q + labs(caption = "\\u00A9 EuroGeographics for the administrative boundaries")
 q
 }
 \keyword{datasets}

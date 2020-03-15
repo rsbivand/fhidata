@@ -1,3 +1,7 @@
+# fhidata 2020.3.15
+
+- *_merging files now run 10 years into the future
+
 # fhidata 2020.2.26
 
 - World map now comes from Eurostat
